@@ -7,18 +7,35 @@
 //
 
 import UIKit
+import NumericPicker
 
 class ViewController: UIViewController {
 
+    // MARK: - IB Outlets
+    @IBOutlet weak var totalMileage: UITextField!
+    @IBOutlet weak var totalMileagePicker: NumericPicker!
+
+    // MARK: - View life cycle
     override func viewDidLoad() {
+        print("[\(#function)]")
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        totalMileagePicker.value = 12345.0
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        print("[\(#function)]")
+
+        super.viewWillAppear(animated)
+
+        totalMileage.text = totalMileagePicker.displayString
     }
 
+    // MARK: - IB actions
+
+    @IBAction func valueChanged(_ sender: NumericPicker) {
+        print("[\(#function)]")
+        totalMileage.text = sender.displayString
+    }
 }
-
