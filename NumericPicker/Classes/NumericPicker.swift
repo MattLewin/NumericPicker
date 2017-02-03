@@ -27,7 +27,7 @@
 import UIKit
 
 @IBDesignable public class NumericPicker: UIControl {
-    
+
     // MARK: - Properties
     override public var intrinsicContentSize: CGSize {
         return picker.bounds.size
@@ -35,7 +35,7 @@ import UIKit
 
     /// The locale used for numeric presentation. (Defaults to current locale)
     public var locale = Locale.current
-    
+
     /// The font for the components of the picker. (Defaults to `Body`)
     public var font = UIFont.preferredFont(forTextStyle: .body)
 
@@ -51,7 +51,7 @@ import UIKit
             updatePicker()
         }
     }
-    
+
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
             displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
@@ -59,7 +59,7 @@ import UIKit
             updatePicker()
         }
     }
-    
+
     /// Number of digits to display to the right of the decimal separator
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
@@ -68,14 +68,13 @@ import UIKit
             updatePicker()
         }
     }
-    
+
     // MARK: Private properties
     /// The `UIPickerView` embedded within this control
     fileprivate(set) var picker: UIPickerView = UIPickerView()
     /// `componentsString` is the numeric value selected in the picker zero-padded to at least `minIntegerDigits` places. It's updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
     fileprivate(set) var componentsString: String = "0"
-    
-    
+
     // MARK: - Object life cycle
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,24 +82,24 @@ import UIKit
         picker.dataSource = self
         addSubview(picker)
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         picker.delegate = self
         picker.dataSource = self
         addSubview(picker)
     }
-    
+
     convenience public init() {
         self.init(frame: CGRect.zero)
     }
-    
+
     func widthOfPickerView() -> CGFloat {
         let componentWidth: CGFloat! = picker.delegate?.pickerView!(picker, widthForComponent: 0)
         let componentCount = CGFloat((picker.dataSource?.numberOfComponents(in: picker))!)
         return componentCount * componentWidth + (componentCount - 1) * (componentWidth / 2) // Account for spacing between components
     }
-    
+
     func updatedDisplayString(value: Double, fractionDigits: Int) -> String {
         let nf = NumberFormatter()
         nf.locale = locale
@@ -109,11 +108,11 @@ import UIKit
         nf.maximumFractionDigits = fractionDigits
         nf.numberStyle = .decimal
         nf.usesGroupingSeparator = true
-        
+
         let stringValue = nf.string(from: NSNumber(value: value))
         return stringValue ?? nf.string(from: 0)!
     }
-    
+
     func updatedComponentString(value: Double, intDigits: Int, fractionDigits: Int) -> String {
         let nf = NumberFormatter()
         nf.locale = locale
@@ -122,15 +121,15 @@ import UIKit
         nf.maximumFractionDigits = fractionDigits
         nf.numberStyle = .decimal
         nf.usesGroupingSeparator = true
-        
+
         let stringValue = nf.string(from: NSNumber(value: value))
         return stringValue ?? nf.string(from: 0)!
     }
-    
+
     func updatePicker() {
         picker.reloadAllComponents()
         var index = 0
-        
+
         for char in componentsString.characters {
             // Row is the numeric value of the digit string, or zero for separators
             let row = Int(String(char)) ?? 0
@@ -140,23 +139,22 @@ import UIKit
     }
 }
 
-
 // MARK: - UIPickerViewDataSource
 extension NumericPicker: UIPickerViewDataSource {
-    
+
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return componentsString.characters.count
     }
-    
+
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let unicodeScalers = componentsString.unicodeScalars
         let index = unicodeScalers.index(unicodeScalers.startIndex, offsetBy: component)
         let char = componentsString.unicodeScalars[index]
-        
+
         guard CharacterSet.decimalDigits.contains(char) else {
             return 1
         }
-        
+
         return 10
     }
 }
@@ -167,14 +165,14 @@ extension NumericPicker: UIPickerViewDelegate {
         let unicodeScalers = componentsString.unicodeScalars
         let index = unicodeScalers.index(unicodeScalers.startIndex, offsetBy: component)
         let char = componentsString.unicodeScalars[index]
-        
+
         guard CharacterSet.decimalDigits.contains(char) else {
             return String(char)
         }
-        
+
         return String(row)
     }
-    
+
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = view as? UILabel ?? UILabel()
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
@@ -183,13 +181,13 @@ extension NumericPicker: UIPickerViewDelegate {
         pickerLabel.sizeToFit()
         return pickerLabel
     }
-    
+
     public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         let pickerLabel = self.pickerView(pickerView, viewForRow: 0, forComponent: component, reusing: nil)
         let width = pickerLabel.bounds.width + 8
         return width
     }
-    
+
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var stringValue = ""
         for index in 0..<pickerView.numberOfComponents {
@@ -197,14 +195,14 @@ extension NumericPicker: UIPickerViewDelegate {
             let title = self.pickerView(pickerView, titleForRow: selectedRow, forComponent: index)
             stringValue = stringValue + title!
         }
-        
+
         let nf = NumberFormatter()
         nf.locale = locale
         nf.minimumIntegerDigits = minIntegerDigits
         nf.maximumFractionDigits = fractionDigits
         nf.numberStyle = .decimal
         nf.usesGroupingSeparator = true
-        
+
         let value = nf.number(from: stringValue)
         self.value = value?.doubleValue ?? 0.0
         sendActions(for: .valueChanged)
