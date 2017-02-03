@@ -39,7 +39,8 @@ import UIKit
     /// The font for the components of the picker. (Defaults to `Body`)
     public var font = UIFont.preferredFont(forTextStyle: .body)
 
-    /// `displayString` is the numeric value selected in the picker without integer zero-padding. It's read-only and updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
+    /// `displayString` is the numeric value selected in the picker without integer zero-padding. It's read-only and 
+    /// updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
     fileprivate(set) public var displayString: String = "0"
 
     // MARK: IB inspectable properties
@@ -47,7 +48,9 @@ import UIKit
     @IBInspectable public var value: Double = 0.0 {
         didSet {
             displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value, intDigits: minIntegerDigits, fractionDigits: fractionDigits)
+            componentsString = updatedComponentString(value: value,
+                                                      intDigits: minIntegerDigits,
+                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
@@ -55,7 +58,9 @@ import UIKit
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
             displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value, intDigits: minIntegerDigits, fractionDigits: fractionDigits)
+            componentsString = updatedComponentString(value: value,
+                                                      intDigits: minIntegerDigits,
+                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
@@ -64,7 +69,9 @@ import UIKit
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
             displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value, intDigits: minIntegerDigits, fractionDigits: fractionDigits)
+            componentsString = updatedComponentString(value: value,
+                                                      intDigits: minIntegerDigits,
+                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
@@ -72,7 +79,8 @@ import UIKit
     // MARK: Private properties
     /// The `UIPickerView` embedded within this control
     fileprivate(set) var picker: UIPickerView = UIPickerView()
-    /// `componentsString` is the numeric value selected in the picker zero-padded to at least `minIntegerDigits` places. It's updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
+    /// `componentsString` is the numeric value selected in the picker zero-padded to at least `minIntegerDigits`
+    /// places. It's updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
     fileprivate(set) var componentsString: String = "0"
 
     // MARK: - Object life cycle
@@ -134,7 +142,7 @@ import UIKit
             // Row is the numeric value of the digit string, or zero for separators
             let row = Int(String(char)) ?? 0
             picker.selectRow(row, inComponent: index, animated: true)
-            index = index + 1
+            index += 1
         }
     }
 }
@@ -193,7 +201,7 @@ extension NumericPicker: UIPickerViewDelegate {
         for index in 0..<pickerView.numberOfComponents {
             let selectedRow = pickerView.selectedRow(inComponent: index)
             let title = self.pickerView(pickerView, titleForRow: selectedRow, forComponent: index)
-            stringValue = stringValue + title!
+            stringValue += title!
         }
 
         let nf = NumberFormatter()
