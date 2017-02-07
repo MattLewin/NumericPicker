@@ -34,7 +34,11 @@ import UIKit
     }
 
     /// The locale used for numeric presentation. (Defaults to current locale)
-    public var locale = Locale.current
+    public var locale = Locale.current {
+        didSet {
+            updatePicker()
+        }
+    }
 
     /// The font for the components of the picker. (Defaults to `Body`)
     public var font = UIFont.preferredFont(forTextStyle: .body)
@@ -47,20 +51,12 @@ import UIKit
     /// Minimum number of digits to display to the left of the decimal separator
     @IBInspectable public var value: Double = 0.0 {
         didSet {
-            displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value,
-                                                      intDigits: minIntegerDigits,
-                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
 
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
-            displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value,
-                                                      intDigits: minIntegerDigits,
-                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
@@ -68,10 +64,6 @@ import UIKit
     /// Number of digits to display to the right of the decimal separator
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
-            displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
-            componentsString = updatedComponentString(value: value,
-                                                      intDigits: minIntegerDigits,
-                                                      fractionDigits: fractionDigits)
             updatePicker()
         }
     }
@@ -135,6 +127,11 @@ import UIKit
     }
 
     func updatePicker() {
+        displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
+        componentsString = updatedComponentString(value: value,
+                                                  intDigits: minIntegerDigits,
+                                                  fractionDigits: fractionDigits)
+
         picker.reloadAllComponents()
         var index = 0
 

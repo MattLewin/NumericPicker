@@ -13,8 +13,10 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9FDC011F061FEFF1BAF91AF4 /* Pods_NumericPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B530D5305B1AF5DC998DB79A /* Pods_NumericPicker_Tests.framework */; };
+		C95C14601E455EBC0001E2F8 /* NumericPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */; };
+		C95C14621E455FA40001E2F8 /* DisplayStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */; };
+		C95C14641E456E230001E2F8 /* ComponentsStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +40,15 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* NumericPicker_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumericPicker_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6FF9BBE4F22FFCEC5C9968C4 /* Pods-NumericPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Tests/Pods-NumericPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		86FFAD628F4C0954D2765F07 /* Pods_NumericPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumericPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94590BC10C92BDDE73687EF1 /* Pods-NumericPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Tests/Pods-NumericPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE978B3AE741238DA6F57E5A /* Pods-NumericPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Example/Pods-NumericPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B530D5305B1AF5DC998DB79A /* Pods_NumericPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumericPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C922EB782788F1D942AB42F1 /* NumericPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NumericPicker.podspec; path = ../NumericPicker.podspec; sourceTree = "<group>"; };
+		C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPickerTests.swift; sourceTree = "<group>"; };
+		C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayStringTests.swift; sourceTree = "<group>"; };
+		C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsStringTests.swift; sourceTree = "<group>"; };
 		C968242F184A98D560DCA3A7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F77EBBA9CB307B6F6067F612 /* Pods-NumericPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Example/Pods-NumericPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +128,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */,
+				C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */,
+				C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -372,7 +378,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				C95C14601E455EBC0001E2F8 /* NumericPickerTests.swift in Sources */,
+				C95C14641E456E230001E2F8 /* ComponentsStringTests.swift in Sources */,
+				C95C14621E455FA40001E2F8 /* DisplayStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumericPicker_Example.app/NumericPicker_Example";
 			};
 			name = Debug;
 		};
@@ -552,6 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumericPicker_Example.app/NumericPicker_Example";
 			};
 			name = Release;
 		};

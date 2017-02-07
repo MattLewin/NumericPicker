@@ -22,28 +22,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-94-obd" userLabel="Total Mileage Input Stack">
-                                <rect key="frame" x="39" y="28" width="320" height="246"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-94-obd" userLabel="IB Picker Stack">
+                                <rect key="frame" x="24.5" y="28" width="334.5" height="272.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCQ-NW-D3N" userLabel="Total Mileage Label Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Interface Builder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIV-6N-h47">
+                                        <rect key="frame" x="31" y="0.0" width="273" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCQ-NW-D3N" userLabel="IB Picker Label Stack">
+                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Mileage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-L6-RrW">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-L6-RrW" userLabel="IB Picker Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHY-nv-rWc" userLabel="Total Mileage">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHY-nv-rWc" userLabel="IB Picker Value">
+                                                <rect key="frame" x="167.5" y="0.0" width="167" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju9-jE-Y1x" userLabel="Total Mileage Picker" customClass="NumericPicker" customModule="NumericPicker">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="216"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju9-jE-Y1x" userLabel="IB Numeric Picker" customClass="NumericPicker" customModule="NumericPicker">
+                                        <rect key="frame" x="7.5" y="56.5" width="320" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="HTa-fx-xdY"/>
                                         </constraints>
@@ -52,14 +58,14 @@
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="fractionDigits">
-                                                <integer key="value" value="0"/>
+                                                <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="value">
                                                 <real key="value" value="4123"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="valueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="FwV-G8-uw0"/>
+                                            <action selector="ibValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dKp-EY-aQu"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -68,20 +74,33 @@
                                     <constraint firstItem="PCQ-NW-D3N" firstAttribute="width" secondItem="xIZ-94-obd" secondAttribute="width" id="WHE-kZ-cLL"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-Tb-mCw" userLabel="Trip Mileage Input Stack">
-                                <rect key="frame" x="39" y="282" width="320" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOJ-b9-7ru" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="308.5" width="375" height="2"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="9AF-x2-YVl"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-Tb-mCw" userLabel="Code Picker Stack">
+                                <rect key="frame" x="24.5" y="318" width="334.5" height="56.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fMo-yv-pOi" userLabel="Trip Mileage Label Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Code (German format)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rm-AR-A2w">
+                                        <rect key="frame" x="0.0" y="0.0" width="334.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fMo-yv-pOi" userLabel="Code Picker Label Stack">
+                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Mileage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-4l-Kmo">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-4l-Kmo" userLabel="Code Picker Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AnS-tL-5W5" userLabel="Trip Mileage">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AnS-tL-5W5" userLabel="Code Picker Value">
+                                                <rect key="frame" x="167.5" y="0.0" width="167" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -96,7 +115,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="top" secondItem="xIZ-94-obd" secondAttribute="bottom" constant="8" symbolic="YES" id="RII-s7-MTj"/>
+                            <constraint firstItem="hOJ-b9-7ru" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1oU-3y-3jm"/>
+                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="top" secondItem="hOJ-b9-7ru" secondAttribute="bottom" constant="8" symbolic="YES" id="5GA-tw-cVJ"/>
+                            <constraint firstItem="hOJ-b9-7ru" firstAttribute="top" secondItem="xIZ-94-obd" secondAttribute="bottom" constant="8" symbolic="YES" id="Au3-rt-j4O"/>
+                            <constraint firstItem="hOJ-b9-7ru" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="LPo-7e-t5t"/>
                             <constraint firstItem="xIZ-94-obd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dko-T4-lYJ"/>
                             <constraint firstItem="wEt-Tb-mCw" firstAttribute="leading" secondItem="xIZ-94-obd" secondAttribute="leading" id="eQn-fE-zMc"/>
                             <constraint firstItem="wEt-Tb-mCw" firstAttribute="trailing" secondItem="xIZ-94-obd" secondAttribute="trailing" id="h8y-PR-Ptz"/>
@@ -104,8 +126,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="totalMileage" destination="yHY-nv-rWc" id="3ld-6r-Nvf"/>
-                        <outlet property="totalMileagePicker" destination="ju9-jE-Y1x" id="Ax8-fK-rMv"/>
+                        <outlet property="codePickerStack" destination="wEt-Tb-mCw" id="zkV-s3-j7W"/>
+                        <outlet property="codePickerValue" destination="AnS-tL-5W5" id="Cs5-Vu-bof"/>
+                        <outlet property="ibNumericPicker" destination="ju9-jE-Y1x" id="S75-Sa-BqX"/>
+                        <outlet property="ibPickerValue" destination="yHY-nv-rWc" id="92X-r8-0le"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -11,23 +11,43 @@ import NumericPicker
 
 class ViewController: UIViewController {
 
-    // MARK: - IB Outlets
-    @IBOutlet weak var totalMileage: UITextField!
-    @IBOutlet weak var totalMileagePicker: NumericPicker!
+    // MARK: - Properties
+    var codeNumericPicker = NumericPicker()
+
+    // MARK: IB Outlets
+    @IBOutlet weak var codePickerStack: UIStackView!
+    @IBOutlet weak var codePickerValue: UITextField!
+
+    @IBOutlet weak var ibPickerValue: UITextField!
+    @IBOutlet weak var ibNumericPicker: NumericPicker!
 
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        totalMileagePicker.value = 12345.0
+        ibNumericPicker.value = 12345.6
+
+        codeNumericPicker.minIntegerDigits = 6
+        codeNumericPicker.fractionDigits = 3
+        codeNumericPicker.value = 76543.21
+        codeNumericPicker.locale = Locale(identifier: "de-DE")
+        codeNumericPicker.addTarget(self, action: #selector(codeValueChanged), for: .valueChanged)
+        codePickerStack.addArrangedSubview(codeNumericPicker)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        totalMileage.text = totalMileagePicker.displayString
+        ibPickerValue.text = ibNumericPicker.displayString
+        codePickerValue.text = codeNumericPicker.displayString
     }
 
-    // MARK: - IB actions
-    @IBAction func valueChanged(_ sender: NumericPicker) {
-        totalMileage.text = sender.displayString
+    // MARK: - Actions
+    func codeValueChanged() {
+        codePickerValue.text = codeNumericPicker.displayString
     }
+
+    @IBAction func ibValueChanged(_ sender: NumericPicker) {
+        ibPickerValue.text = sender.displayString
+    }
+
 }
