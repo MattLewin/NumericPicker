@@ -61,7 +61,7 @@
                                                 <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                <real key="value" value="4123"/>
+                                                <real key="value" value="1234.5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -75,14 +75,14 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOJ-b9-7ru" userLabel="Separator">
-                                <rect key="frame" x="0.0" y="308.5" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="308" width="375" height="2"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="9AF-x2-YVl"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-Tb-mCw" userLabel="Code Picker Stack">
-                                <rect key="frame" x="24.5" y="318" width="334.5" height="56.5"/>
+                                <rect key="frame" x="24.5" y="318.5" width="334.5" height="56.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Code (German format)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rm-AR-A2w">
                                         <rect key="frame" x="0.0" y="0.0" width="334.5" height="26.5"/>
