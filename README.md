@@ -49,7 +49,7 @@ To run the example project, clone the repo, and run `pod install` from the `Exam
 `NumericPicker.xcworkspace`.
 
 *Note: The example assumes you are using Cocoapods. Please create an issue if you would like something else. (Or do it 
-yourself, and submit a pull request. :smiley:)*
+yourself, and submit a pull request.* :smiley:*)*
 
 ## Installation
 
@@ -88,7 +88,7 @@ into your Xcode project (Linked Frameworks and Libraries in `Targets`).
 
 ### Swift Package Manager (SPM)
 
-'`NumericPicker`' does not yet support the Swift Package Manager
+`NumericPicker` does not yet support the Swift Package Manager
 
 
 ### Manually
@@ -108,20 +108,20 @@ need to implement [`UIPickerViewDataSource`](https://developer.apple.com/referen
 
 ### Configurable Properties
 
-* `var value: Double` - The value displayed in the picker. Set this value to update the picker programatically. 
-*(Defaults: 0)*
-* `var minIntegerDigits: Int` - The minimum number of integer digits (digits to the left of the decimal separator) to
+* `value: Double` - The value displayed in the picker. Set this value to update the picker programatically. 
+*(Default: 0)*
+* `minIntegerDigits: Int` - The minimum number of integer digits (digits to the left of the decimal separator) to
 include in the picker. Think of this as zero-padding the picker. If `value` requires more than this minimum, the picker
 will automatically meet this requirement. (This is probably not what you want, though.) *(Default: 1)*   
-* `var fractionDigits: Int` - The number of digits to the right of the decimal separator. `NumericPicker` guarantees
+* `fractionDigits: Int` - The number of digits to the right of the decimal separator. `NumericPicker` guarantees
 exactly this many fractional digits will be displayed. You can use this to achieve rounding or zero-padding of values
 to the right of the decimal separator. *(Default: 0)*
-* `var locale: Locale` - The locale used to format the numeric values. Use this if you want numbers formatted with
+* `locale: Locale` - The locale used to format the numeric values. Use this if you want numbers formatted with
 separators other than those used by the device locale. *(Default: current device locale)*
-* `var font: UIFont` - The font used to format the picker components. *(Default: `Body` text style)*
-* `var displayString: String` - **READ ONLY** - The text representation of `value`. This string will contain locale-
-specific grouping and decimal separators. It will have exactly `fractionDigits` digits to the right of the decimal
-separator the minimum number of integer places to represent `value`.
+* `font: UIFont` - The font used to format the picker components. *(Default: `Body` text style)*
+* `displayString: String` - **READ ONLY** - The text representation of `value`. This string will contain locale-specific
+grouping and decimal separators. It will have exactly `fractionDigits` digits to the right of the decimal separator and 
+the minimum number of integer places necessary to represent `value`.
 
 
 ### Interface Builder
