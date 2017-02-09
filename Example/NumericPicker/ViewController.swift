@@ -34,9 +34,9 @@ class ViewController: UIViewController {
 
     // MARK: IB Outlets
     @IBOutlet weak var codePickerStack: UIStackView!
-    @IBOutlet weak var codePickerValue: UITextField!
+    @IBOutlet weak var codePickerValue: UILabel!
 
-    @IBOutlet weak var ibPickerValue: UITextField!
+    @IBOutlet weak var ibPickerValue: UILabel!
     @IBOutlet weak var ibNumericPicker: NumericPicker!
 
     // MARK: - View life cycle
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         ibNumericPicker.value = 12345.6
 
+        // Configure a NumericPicker in code
         codeNumericPicker.minIntegerDigits = 6
         codeNumericPicker.fractionDigits = 3
         codeNumericPicker.value = 76543.21

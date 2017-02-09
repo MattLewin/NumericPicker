@@ -29,53 +29,59 @@ import UIKit
 @IBDesignable public class NumericPicker: UIControl {
 
     // MARK: - Properties
+
+    /// The font for the components of the picker. (defaults to `Body`)
+    public var font = UIFont.preferredFont(forTextStyle: .body)
+
+    /// `displayString` is the numeric value selected in the picker without integer zero-padding. It's read-only and
+    /// updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
+    fileprivate(set) public var displayString: String = "0"
+
     override public var intrinsicContentSize: CGSize {
         return picker.bounds.size
     }
 
-    /// The locale used for numeric presentation. (Defaults to current locale)
+    /// The locale used for numeric presentation. (defaults to current locale)
     public var locale = Locale.current {
         didSet {
             updatePicker()
         }
     }
 
-    /// The font for the components of the picker. (Defaults to `Body`)
-    public var font = UIFont.preferredFont(forTextStyle: .body)
-
-    /// `displayString` is the numeric value selected in the picker without integer zero-padding. It's read-only and 
-    /// updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
-    fileprivate(set) public var displayString: String = "0"
-
     // MARK: IB inspectable properties
-    /// Minimum number of digits to display to the left of the decimal separator
-    @IBInspectable public var value: Double = 0.0 {
-        didSet {
-            updatePicker()
-        }
-    }
 
-    @IBInspectable public var minIntegerDigits: Int = 1 {
-        didSet {
-            updatePicker()
-        }
-    }
-
-    /// Number of digits to display to the right of the decimal separator
+    /// Number of digits to display to the right of the decimal separator (defaults to 0)
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
             updatePicker()
         }
     }
 
+    /// Minimum number of digits to display to the left of the decimal separator (defaults to 1)
+    @IBInspectable public var minIntegerDigits: Int = 1 {
+        didSet {
+            updatePicker()
+        }
+    }
+
+    /// The numeric value shown in the picker (defaults to 0.0)
+    @IBInspectable public var value: Double = 0.0 {
+        didSet {
+            updatePicker()
+        }
+    }
+
     // MARK: Private properties
-    /// The `UIPickerView` embedded within this control
-    fileprivate(set) var picker: UIPickerView = UIPickerView()
+
     /// `componentsString` is the numeric value selected in the picker zero-padded to at least `minIntegerDigits`
     /// places. It's updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
     fileprivate(set) var componentsString: String = "0"
 
+    /// The `UIPickerView` embedded within this control
+    fileprivate(set) var picker: UIPickerView = UIPickerView()
+
     // MARK: - Object life cycle
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         picker.delegate = self
@@ -94,12 +100,37 @@ import UIKit
         self.init(frame: CGRect.zero)
     }
 
-    func widthOfPickerView() -> CGFloat {
-        let componentWidth: CGFloat! = picker.delegate?.pickerView!(picker, widthForComponent: 0)
-        let componentCount = CGFloat((picker.dataSource?.numberOfComponents(in: picker))!)
-        return componentCount * componentWidth + (componentCount - 1) * (componentWidth / 2) // Account for spacing between components
-    }
+    // MARK: - Picker Maintenance
 
+    /**
+
+     - parameter value: the new value displayed in the picker
+     - parameter intDigits: the number of digits displayed to the **left** of the decimal separator
+     - parameter fractionDigits: the number of digits displayed to the **right** of the decimal separator
+
+     - returns: a string used by `NumericPicker`'s `UIPickerViewDataSource` and `UIPickerViewDelegate` to create and
+     configure the components of the picker view
+     */
+    func updatedComponentString(value: Double, intDigits: Int, fractionDigits: Int) -> String {
+        let nf = NumberFormatter()
+        nf.locale = locale
+        nf.minimumIntegerDigits = intDigits
+        nf.minimumFractionDigits = fractionDigits
+        nf.maximumFractionDigits = fractionDigits
+        nf.numberStyle = .decimal
+        nf.usesGroupingSeparator = true
+
+        let stringValue = nf.string(from: NSNumber(value: value))
+        return stringValue ?? nf.string(from: 0)!
+    }
+    
+    /**
+
+     - parameter value: the new value displayed in the picker
+     - parameter fractionDigits: the number of digits displayed to the right of the decimal separator
+     
+     - returns: a string formatted for display to the user
+    */
     func updatedDisplayString(value: Double, fractionDigits: Int) -> String {
         let nf = NumberFormatter()
         nf.locale = locale
@@ -113,19 +144,8 @@ import UIKit
         return stringValue ?? nf.string(from: 0)!
     }
 
-    func updatedComponentString(value: Double, intDigits: Int, fractionDigits: Int) -> String {
-        let nf = NumberFormatter()
-        nf.locale = locale
-        nf.minimumIntegerDigits = intDigits
-        nf.minimumFractionDigits = fractionDigits
-        nf.maximumFractionDigits = fractionDigits
-        nf.numberStyle = .decimal
-        nf.usesGroupingSeparator = true
-
-        let stringValue = nf.string(from: NSNumber(value: value))
-        return stringValue ?? nf.string(from: 0)!
-    }
-
+    /// Recalculates `displayString` and `componentsString` and refreshes the picker view. Called whenever a property
+    /// of the `NumericPicker` changes.
     func updatePicker() {
         displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
         componentsString = updatedComponentString(value: value,
@@ -141,6 +161,14 @@ import UIKit
             picker.selectRow(row, inComponent: index, animated: true)
             index += 1
         }
+    }
+
+    // MARK: - Functions to facilitate testing
+    
+    func widthOfPickerView() -> CGFloat {
+        let componentWidth: CGFloat! = picker.delegate?.pickerView!(picker, widthForComponent: 0)
+        let componentCount = CGFloat((picker.dataSource?.numberOfComponents(in: picker))!)
+        return componentCount * componentWidth + (componentCount - 1) * (componentWidth / 2) // Account for spacing between components
     }
 }
 

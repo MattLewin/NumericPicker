@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-94-obd" userLabel="IB Picker Stack">
-                                <rect key="frame" x="24.5" y="28" width="334.5" height="272.5"/>
+                                <rect key="frame" x="24.5" y="28" width="334.5" height="263"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Interface Builder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIV-6N-h47">
                                         <rect key="frame" x="31" y="0.0" width="273" height="26.5"/>
@@ -32,24 +32,24 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCQ-NW-D3N" userLabel="IB Picker Label Stack">
-                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-L6-RrW" userLabel="IB Picker Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHY-nv-rWc" userLabel="IB Picker Value">
-                                                <rect key="frame" x="167.5" y="0.0" width="167" height="30"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ka-BM-xgU" userLabel="IB Picker Value">
+                                                <rect key="frame" x="167.5" y="0.0" width="167" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju9-jE-Y1x" userLabel="IB Numeric Picker" customClass="NumericPicker" customModule="NumericPicker">
-                                        <rect key="frame" x="7.5" y="56.5" width="320" height="216"/>
+                                        <rect key="frame" x="7.5" y="47" width="320" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="HTa-fx-xdY"/>
                                         </constraints>
@@ -70,19 +70,18 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="PCQ-NW-D3N" firstAttribute="centerX" secondItem="xIZ-94-obd" secondAttribute="centerX" id="Ilc-oD-ZRP"/>
                                     <constraint firstItem="PCQ-NW-D3N" firstAttribute="width" secondItem="xIZ-94-obd" secondAttribute="width" id="WHE-kZ-cLL"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOJ-b9-7ru" userLabel="Separator">
-                                <rect key="frame" x="0.0" y="308" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="299" width="375" height="2"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="9AF-x2-YVl"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-Tb-mCw" userLabel="Code Picker Stack">
-                                <rect key="frame" x="24.5" y="318.5" width="334.5" height="56.5"/>
+                                <rect key="frame" x="24.5" y="309" width="334.5" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Code (German format)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rm-AR-A2w">
                                         <rect key="frame" x="0.0" y="0.0" width="334.5" height="26.5"/>
@@ -91,20 +90,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fMo-yv-pOi" userLabel="Code Picker Label Stack">
-                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="26.5" width="334.5" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-4l-Kmo" userLabel="Code Picker Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AnS-tL-5W5" userLabel="Code Picker Value">
-                                                <rect key="frame" x="167.5" y="0.0" width="167" height="30"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJ9-pc-ezI" userLabel="Code Picker Value">
+                                                <rect key="frame" x="167.5" y="0.0" width="167" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -127,9 +126,9 @@
                     </view>
                     <connections>
                         <outlet property="codePickerStack" destination="wEt-Tb-mCw" id="zkV-s3-j7W"/>
-                        <outlet property="codePickerValue" destination="AnS-tL-5W5" id="Cs5-Vu-bof"/>
+                        <outlet property="codePickerValue" destination="YJ9-pc-ezI" id="F0S-yR-2eh"/>
                         <outlet property="ibNumericPicker" destination="ju9-jE-Y1x" id="S75-Sa-BqX"/>
-                        <outlet property="ibPickerValue" destination="yHY-nv-rWc" id="92X-r8-0le"/>
+                        <outlet property="ibPickerValue" destination="1ka-BM-xgU" id="vHa-j4-1xO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

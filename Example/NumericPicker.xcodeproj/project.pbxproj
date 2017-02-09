@@ -46,10 +46,13 @@
 		AE978B3AE741238DA6F57E5A /* Pods-NumericPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Example/Pods-NumericPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B530D5305B1AF5DC998DB79A /* Pods_NumericPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumericPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C922EB782788F1D942AB42F1 /* NumericPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NumericPicker.podspec; path = ../NumericPicker.podspec; sourceTree = "<group>"; };
+		C9308CBC1E4BC09700CE7ED2 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
+		C9308CBD1E4BC0A700CE7ED2 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		C9308CBE1E4BC14B00CE7ED2 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPickerTests.swift; sourceTree = "<group>"; };
 		C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayStringTests.swift; sourceTree = "<group>"; };
 		C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsStringTests.swift; sourceTree = "<group>"; };
-		C968242F184A98D560DCA3A7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C968242F184A98D560DCA3A7 /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		F77EBBA9CB307B6F6067F612 /* Pods-NumericPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumericPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NumericPicker_Example/Pods-NumericPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +88,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				C9308CBD1E4BC0A700CE7ED2 /* .travis.yml */,
+				C9308CBF1E4BC45A00CE7ED2 /* Metadata */,
 				607FACD21AFB9204008FA782 /* Example for NumericPicker */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -144,14 +148,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+		C9308CBF1E4BC45A00CE7ED2 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				C9308CBC1E4BC09700CE7ED2 /* .swift-version */,
+				C9308CBE1E4BC14B00CE7ED2 /* CHANGELOG.md */,
+				C968242F184A98D560DCA3A7 /* LICENSE.md */,
 				C922EB782788F1D942AB42F1 /* NumericPicker.podspec */,
 				03B82A7C69EAA5DC3A180614 /* README.md */,
-				C968242F184A98D560DCA3A7 /* LICENSE */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		D4F2CB4B93310DE15B1621B4 /* Pods */ = {
