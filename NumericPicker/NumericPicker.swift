@@ -195,6 +195,8 @@ import UIKit
 // MARK: - UIPickerViewDataSource
 extension NumericPicker: UIPickerViewDataSource {
 
+    // MARK: - UIPickerViewDataSource
+
     /**
      Called by the picker view when it needs the number of components.
 
@@ -227,8 +229,9 @@ extension NumericPicker: UIPickerViewDataSource {
     }
 }
 
-// MARK: - UIPickerViewDelegate
 extension NumericPicker: UIPickerViewDelegate {
+
+    // MARK: - UIPickerViewDelegate
 
     /**
      Called by the picker view when it needs the title to use for a given row in a given component.
