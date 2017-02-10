@@ -90,10 +90,12 @@ import UIKit
 
     // MARK: - Object life cycle
 
-    /// Initializes and returns a newly allocated `NumericPicker` object with the specified frame rectangle.
-    ///
-    /// - parameter frame: The frame rectangle for the view, measured in points. The origin of the frame is relative to 
-    ///     the superview in which you plan to add it.
+    /**
+     Initializes and returns a newly allocated `NumericPicker` object with the specified frame rectangle.
+
+     - parameter frame: The frame rectangle for the view, measured in points. The origin of the frame is relative to
+        the superview in which you plan to add it.
+     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         picker.delegate = self
@@ -101,9 +103,11 @@ import UIKit
         addSubview(picker)
     }
 
-    /// Returns an object initialized from data in a given unarchiver.
-    ///
-    /// - parameter aDecoder: An unarchiver object.
+    /**
+     Returns an object initialized from data in a given unarchiver.
+
+     - parameter aDecoder: An unarchiver object.
+     */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         picker.delegate = self
