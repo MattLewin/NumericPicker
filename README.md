@@ -14,7 +14,7 @@
 
 ## Description
 
-NumericPicker is a drop-in iOS picker control written in Swift 3. It makes simplifies the creation of pickers that allow
+NumericPicker is a drop-in iOS picker control written in Swift 3. It simplifies the creation of pickers that allow
 your users to specify numbers by digit. It automatically uses the proper grouping and decimal separator for the
 current (or specified) locale. You can easily dictate the number of integer and decimal places in the controller.
 
