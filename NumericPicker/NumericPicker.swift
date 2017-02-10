@@ -26,6 +26,13 @@
 
 import UIKit
 
+/**
+ NumericPicker is a drop-in iOS picker control written in Swift 3. It makes simplifies the creation of pickers that allow
+ your users to specify numbers by digit. It automatically uses the proper grouping and decimal separator for the
+ current (or specified) locale. You can easily dictate the number of integer and decimal places in the controller.
+
+ ![Sample Video](https://cl.ly/j5XO/Screen%20Recording%202017-02-08%20at%2003.36%20PM.gif)
+ */
 @IBDesignable public class NumericPicker: UIControl {
 
     // MARK: - Properties
@@ -37,6 +44,7 @@ import UIKit
     /// updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.
     fileprivate(set) public var displayString: String = "0"
 
+    /// The natural size for the receiving view, considering only properties of the view itself.
     override public var intrinsicContentSize: CGSize {
         return picker.bounds.size
     }
@@ -50,21 +58,21 @@ import UIKit
 
     // MARK: IB inspectable properties
 
-    /// Number of digits to display to the right of the decimal separator (defaults to 0)
+    /// Number of digits to display to the right of the decimal separator (defaults to `0`)
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
             updatePicker()
         }
     }
 
-    /// Minimum number of digits to display to the left of the decimal separator (defaults to 1)
+    /// Minimum number of digits to display to the left of the decimal separator (defaults to `1`)
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
             updatePicker()
         }
     }
 
-    /// The numeric value shown in the picker (defaults to 0.0)
+    /// The numeric value shown in the picker (defaults to `0.0`)
     @IBInspectable public var value: Double = 0.0 {
         didSet {
             updatePicker()
@@ -81,7 +89,10 @@ import UIKit
     fileprivate(set) var picker: UIPickerView = UIPickerView()
 
     // MARK: - Object life cycle
-    
+
+    /// Initializes and returns a newly allocated `NumericPicker` object with the specified frame rectangle.
+    /// - parameter frame: The frame rectangle for the view, measured in points. The origin of the frame is relative to 
+    ///     the superview in which you plan to add it.
     override public init(frame: CGRect) {
         super.init(frame: frame)
         picker.delegate = self
@@ -89,6 +100,8 @@ import UIKit
         addSubview(picker)
     }
 
+    /// Returns an object initialized from data in a given unarchiver.
+    /// - parameter aDecoder: An unarchiver object.
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         picker.delegate = self
@@ -96,6 +109,7 @@ import UIKit
         addSubview(picker)
     }
 
+    /// Initializes and returns a newly allocated `NumericPicker` object with a zero-sized frame rectangle.
     convenience public init() {
         self.init(frame: CGRect.zero)
     }
@@ -175,10 +189,25 @@ import UIKit
 // MARK: - UIPickerViewDataSource
 extension NumericPicker: UIPickerViewDataSource {
 
+    /**
+     Called by the picker view when it needs the number of components.
+
+     - parameter pickerView: The picker view requesting the data.
+
+     - returns: The number of components (or “columns”) that the picker view should display.
+     */
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return componentsString.characters.count
     }
 
+    /**
+     Called by the picker view when it needs the number of rows for a specified component.
+     
+     - parameter pickerView: The picker view requesting the data.
+     - parameter component: A zero-indexed number identifying a component of `pickerView`. Components are numbered left-to-right.
+     
+     - returns: The number of rows for the component.
+     */
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let unicodeScalers = componentsString.unicodeScalars
         let index = unicodeScalers.index(unicodeScalers.startIndex, offsetBy: component)
@@ -194,6 +223,16 @@ extension NumericPicker: UIPickerViewDataSource {
 
 // MARK: - UIPickerViewDelegate
 extension NumericPicker: UIPickerViewDelegate {
+
+    /**
+     Called by the picker view when it needs the title to use for a given row in a given component.
+     
+     - parameter pickerView: The picker view requesting the data.
+     - parameter row: A zero-indexed number identifying a row of `component`. Rows are numbered top-to-bottom.
+     - parameter component: A zero-indexed number identifying a component of `pickerView`. Components are numbered left-to-right.
+     
+     - returns: The string to use as the title of the indicated component row.
+     */
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let unicodeScalers = componentsString.unicodeScalars
         let index = unicodeScalers.index(unicodeScalers.startIndex, offsetBy: component)
@@ -206,6 +245,17 @@ extension NumericPicker: UIPickerViewDelegate {
         return String(row)
     }
 
+    /**
+     Called by the picker view when it needs the view to use for a given row in a given component.
+     
+     - parameter pickerView: The picker view requesting the data.
+     - parameter row: A zero-indexed number identifying a row of `component`. Rows are numbered top-to-bottom.
+     - parameter component: A zero-indexed number identifying a component of `pickerView`. Components are numbered left-to-right.
+     - parameter view: A view object that was previously used for this row, but is now hidden and cached by the picker view.
+     
+     - returns: A view object to use as the content of `row`. The object can be any subclass of UIView, such as UILabel,
+        UIImageView, or even a custom view.
+     */
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = view as? UILabel ?? UILabel()
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
@@ -215,12 +265,27 @@ extension NumericPicker: UIPickerViewDelegate {
         return pickerLabel
     }
 
+    /**
+     Called by the picker view when it needs the row width to use for drawing row content.
+
+     - parameter pickerView: The picker view requesting the data.
+     - parameter component: A zero-indexed number identifying a component of `pickerView`. Components are numbered left-to-right.
+
+     - returns: A `CGFloat` indicating the width of the row in points.
+     */
     public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         let pickerLabel = self.pickerView(pickerView, viewForRow: 0, forComponent: component, reusing: nil)
         let width = pickerLabel.bounds.width + 8
         return width
     }
 
+    /**
+     Called by the picker view when the user selects a row in a component.
+
+     - parameter pickerView: The picker view requesting the data.
+     - parameter row: A zero-indexed number identifying a row of `component`. Rows are numbered top-to-bottom.
+     - parameter component: A zero-indexed number identifying a component of `pickerView`. Components are numbered left-to-right.
+     */
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var stringValue = ""
         for index in 0..<pickerView.numberOfComponents {
