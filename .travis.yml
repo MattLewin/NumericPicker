@@ -5,7 +5,7 @@
 osx_image: xcode8.2
 language: objective-c
 xcode_workspace: Example/NumericPicker.xcworkspace
-xcode_scheme: Example/NumericPicker_Example
+xcode_scheme: Example/NumericPicker-Example
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
