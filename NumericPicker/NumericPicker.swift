@@ -52,7 +52,8 @@ import UIKit
     /// The locale used for numeric presentation. (defaults to current locale)
     public var locale = Locale.current {
         didSet {
-            updatePicker()
+            updateValue()
+            resize()
         }
     }
 
@@ -61,7 +62,8 @@ import UIKit
     /// Number of digits to display to the right of the decimal separator (defaults to `0`)
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
-            updatePicker()
+            updateValue()
+            resize()
         }
     }
 
@@ -76,7 +78,11 @@ import UIKit
     /// The numeric value shown in the picker (defaults to `0.0`)
     @IBInspectable public var value: Double = 0.0 {
         didSet {
-            updatePicker()
+            updateValue()
+
+            guard justInstantiated else { return }
+            justInstantiated = false
+            resize()
         }
     }
 
@@ -88,6 +94,10 @@ import UIKit
 
     /// The `UIPickerView` embedded within this control
     fileprivate(set) var picker: UIPickerView = UIPickerView()
+
+    /// When the `NumericPicker` is first instantiated, we want to size it properly according to `value`. After that,
+    /// changing `value` shouldn't resize the view.
+    private var justInstantiated = true
 
     // MARK: - Object life cycle
 
@@ -167,7 +177,7 @@ import UIKit
 
     /// Recalculates `displayString` and `componentsString` and refreshes the picker view. Called whenever a property
     /// of the `NumericPicker` changes.
-    func updatePicker() {
+    func updateValue() {
         displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
         componentsString = updatedComponentString(value: value,
                                                   intDigits: minIntegerDigits,
@@ -184,8 +194,23 @@ import UIKit
         }
     }
 
-    // MARK: - Functions to facilitate testing
-    
+    /**
+     Resizes the `NumericPicker` to contain the all components. Called when a property affecting the picker's
+     appearance changes.
+     */
+    func resize() {
+        var pickerSize = picker.bounds.size
+        pickerSize.width = widthOfPickerView()
+        picker.bounds.size = pickerSize
+        frame.size = pickerSize
+        picker.frame = bounds
+    }
+
+    /**
+     Calculates the width of the picker based on the number of components.
+
+     - returns: the new width of the picker
+     */
     func widthOfPickerView() -> CGFloat {
         let componentWidth: CGFloat! = picker.delegate?.pickerView!(picker, widthForComponent: 0)
         let componentCount = CGFloat((picker.dataSource?.numberOfComponents(in: picker))!)
