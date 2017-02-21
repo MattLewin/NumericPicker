@@ -78,6 +78,12 @@ import UIKit
     /// The numeric value shown in the picker (defaults to `0.0`)
     @IBInspectable public var value: Double = 0.0 {
         didSet {
+            // If value exceeds the maximum integer value representable by minIntegerDigits, increase minIntegerDigits
+            // to avoid picker components disappearing if the user sets the leftmost component to zero.
+            if Decimal(value) >= pow(10, minIntegerDigits) {
+                minIntegerDigits = intDigits(in: value)
+            }
+
             updateValue()
 
             guard justInstantiated else { return }
@@ -215,6 +221,24 @@ import UIKit
         let componentWidth: CGFloat! = picker.delegate?.pickerView!(picker, widthForComponent: 0)
         let componentCount = CGFloat((picker.dataSource?.numberOfComponents(in: picker))!)
         return componentCount * componentWidth + (componentCount - 1) * (componentWidth / 2) // Account for spacing between components
+    }
+
+    /**
+
+     - parameter value: the number for which to determine the integer digits (say that ten times fast)
+
+     - returns: the number of integer digits in `value`
+     */
+    private func intDigits(in value: Double) -> Int {
+        var intValue = Int(value)
+        var digits = 0
+
+        repeat {
+            intValue /= 10
+            digits += 1
+        } while (intValue != 0)
+
+        return digits
     }
 }
 
