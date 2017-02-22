@@ -1,3 +1,6 @@
+# 0.2.1
+* Alphabetize all properties and functions in NumericPicker.swift, and modify the "MARK" comments to be sexier in Xcode
+
 # 0.2.0
 * Automatically increase `minIntegerDigits` if `value` is set to something with more than `minIntegerDigits`. 
     This prevents picker components from vanishing if the user sets the leftmost component to zero.
