@@ -39,7 +39,12 @@ import UIKit
     // MARK: - Properties
 
     /// The font for the components of the picker. (defaults to `Body`)
-    public var font = UIFont.preferredFont(forTextStyle: .body)
+    public var font = UIFont.preferredFont(forTextStyle: .body) {
+        didSet {
+            picker.reloadAllComponents()
+            resize()
+        }
+    }
 
     /// `displayString` is the numeric value selected in the picker without integer zero-padding. It's read-only and
     /// updated by changes to `value`, `minIntegerDigits`, and `fractionDigits`.

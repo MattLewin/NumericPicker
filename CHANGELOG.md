@@ -1,3 +1,6 @@
+# 0.2.2
+* Re-layout the control when `font` is updated
+
 # 0.2.1
 * Alphabetize all properties and functions in NumericPicker.swift, and modify the "MARK" comments to be sexier in Xcode
 
