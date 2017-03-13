@@ -1,3 +1,7 @@
+# 0.3.0
+* Resolves #1: allow for setting a minimum value for the picker to display
+* Update podspec for version 0.3.0
+
 # 0.2.2
 * Re-layout the control when `font` is updated
 
