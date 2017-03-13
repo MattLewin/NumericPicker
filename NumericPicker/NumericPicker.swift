@@ -58,7 +58,7 @@ import UIKit
     /// The locale used for numeric presentation. (defaults to current locale)
     public var locale = Locale.current {
         didSet {
-            updateValue()
+            updateValue(animated: false)
             resize()
         }
     }
@@ -68,7 +68,7 @@ import UIKit
     /// Number of digits to display to the right of the decimal separator (defaults to `0`)
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
-            updateValue()
+            updateValue(animated: false)
             resize()
         }
     }
@@ -76,8 +76,18 @@ import UIKit
     /// Minimum number of digits to display to the left of the decimal separator (defaults to `1`)
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
-            updateValue()
+            updateValue(animated: false)
             resize()
+        }
+    }
+
+    /// Minimum value the picker may be set to (defaults to `0.0`)
+    /// - Warning: Must be zero or greater.
+    @IBInspectable public var minValue: Double = 0.0 {
+        didSet {
+            if minValue < 0.0 {
+                minValue = 0.0
+            }
         }
     }
 
@@ -90,7 +100,7 @@ import UIKit
                 minIntegerDigits = intDigits(in: value)
             }
 
-            updateValue()
+            updateValue(animated: true)
 
             guard justInstantiated else { return }
             justInstantiated = false
@@ -202,7 +212,7 @@ import UIKit
 
     /// Recalculates `displayString` and `componentsString` and refreshes the picker view. Called whenever a property
     /// of the `NumericPicker` changes.
-    func updateValue() {
+    func updateValue(animated: Bool = true) {
         displayString = updatedDisplayString(value: value, fractionDigits: fractionDigits)
         componentsString = updatedComponentString(value: value,
                                                   intDigits: minIntegerDigits,
@@ -214,9 +224,11 @@ import UIKit
         for char in componentsString.characters {
             // Row is the numeric value of the digit string, or zero for separators
             let row = Int(String(char)) ?? 0
-            picker.selectRow(row, inComponent: index, animated: true)
+            picker.selectRow(row, inComponent: index, animated: animated)
             index += 1
         }
+
+        sendActions(for: .valueChanged)
     }
 
     /**
@@ -318,7 +330,14 @@ extension NumericPicker: UIPickerViewDelegate {
 
         let value = nf.number(from: stringValue)
         self.value = value?.doubleValue ?? 0.0
-        sendActions(for: .valueChanged)
+
+        guard self.value >= minValue else {
+            self.value = minValue
+            updateValue(animated: true)
+            return
+        }
+
+        updateValue(animated: false)
     }
 
     /**
