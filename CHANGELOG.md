@@ -1,3 +1,8 @@
+# 0.3.1
+* Send '.valueChanged' message only when the numeric value of the picker changes, rather than when other factors (i.e., minimum
+  fraction or maximum integer digits changes). This means the 'displayString' will need to be obtained after setting one of these
+  properties.
+
 # 0.3.0
 * Resolves #1: allow for setting a minimum value for the picker to display
 * Update podspec for version 0.3.0
@@ -9,9 +14,9 @@
 * Alphabetize all properties and functions in NumericPicker.swift, and modify the "MARK" comments to be sexier in Xcode
 
 # 0.2.0
-* Automatically increase `minIntegerDigits` if `value` is set to something with more than `minIntegerDigits`. 
+* Automatically increase `minIntegerDigits` if `value` is set to something with more than `minIntegerDigits`.
     This prevents picker components from vanishing if the user sets the leftmost component to zero.
-* Regardless of where the control is instantiated (code or IB) and how its properties are configured (defaults, code, 
+* Regardless of where the control is instantiated (code or IB) and how its properties are configured (defaults, code,
     IB), ensure it sized properly.
 * Clean up some whitespace
 * Fix a stupid typo on the README
