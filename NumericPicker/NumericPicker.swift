@@ -58,6 +58,7 @@ import UIKit
     /// The locale used for numeric presentation. (defaults to current locale)
     public var locale = Locale.current {
         didSet {
+            numberFormatter.locale = locale
             updateAppearance(animated: false)
             resize()
         }
@@ -122,6 +123,9 @@ import UIKit
     /// The `UIPickerView` embedded within this control
     fileprivate(set) var picker: UIPickerView = UIPickerView()
 
+    /// We rely so heavily on `NumberFormatter`, that we keep one instantiated as a property
+    fileprivate let numberFormatter = NumberFormatter()
+
     // MARK: - Object life cycle
 
     /// Initializes and returns a newly allocated `NumericPicker` object with a zero-sized frame rectangle.
@@ -136,9 +140,7 @@ import UIKit
      */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        picker.delegate = self
-        picker.dataSource = self
-        addSubview(picker)
+        commonInit()
     }
 
     /**
@@ -149,11 +151,18 @@ import UIKit
      */
     override public init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
+    }
+
+    /**
+     Encapsulates the functionality common to all `init` methods of `NumericPicker`
+     */
+    private func commonInit() {
+        numberFormatter.usesGroupingSeparator = true
         picker.delegate = self
         picker.dataSource = self
         addSubview(picker)
     }
-
 
     // MARK: - Picker Maintenance
 
@@ -202,16 +211,13 @@ import UIKit
      configure the components of the picker view
      */
     func updatedComponentString(value: Double, intDigits: Int, fractionDigits: Int) -> String {
-        let nf = NumberFormatter()
-        nf.locale = locale
-        nf.minimumIntegerDigits = intDigits
-        nf.minimumFractionDigits = fractionDigits
-        nf.maximumFractionDigits = fractionDigits
-        nf.numberStyle = .decimal
-        nf.usesGroupingSeparator = true
+        numberFormatter.minimumIntegerDigits = intDigits
+        numberFormatter.minimumFractionDigits = fractionDigits
+        numberFormatter.maximumFractionDigits = fractionDigits
+        numberFormatter.numberStyle = .decimal
 
-        let stringValue = nf.string(from: NSNumber(value: value))
-        return stringValue ?? nf.string(from: 0)!
+        let stringValue = numberFormatter.string(from: NSNumber(value: value))
+        return stringValue ?? numberFormatter.string(from: 0)!
     }
 
     /**
@@ -222,16 +228,13 @@ import UIKit
      - returns: a string formatted for display to the user
      */
     func updatedDisplayString(value: Double, fractionDigits: Int) -> String {
-        let nf = NumberFormatter()
-        nf.locale = locale
-        nf.minimumIntegerDigits = 1
-        nf.minimumFractionDigits = fractionDigits
-        nf.maximumFractionDigits = fractionDigits
-        nf.numberStyle = .decimal
-        nf.usesGroupingSeparator = true
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.minimumFractionDigits = fractionDigits
+        numberFormatter.maximumFractionDigits = fractionDigits
+        numberFormatter.numberStyle = .decimal
 
-        let stringValue = nf.string(from: NSNumber(value: value))
-        return stringValue ?? nf.string(from: 0)!
+        let stringValue = numberFormatter.string(from: NSNumber(value: value))
+        return stringValue ?? numberFormatter.string(from: 0)!
     }
 
     /**
@@ -303,11 +306,9 @@ extension NumericPicker: UIPickerViewDataSource {
     }
 }
 
-// MARK: -
+// MARK: - UIPickerViewDelegate
 
 extension NumericPicker: UIPickerViewDelegate {
-
-    // MARK: UIPickerViewDelegate
 
     /**
      Called by the picker view when the user selects a row in a component.
@@ -324,14 +325,11 @@ extension NumericPicker: UIPickerViewDelegate {
             stringValue += title!
         }
 
-        let nf = NumberFormatter()
-        nf.locale = locale
-        nf.minimumIntegerDigits = minIntegerDigits
-        nf.maximumFractionDigits = fractionDigits
-        nf.numberStyle = .decimal
-        nf.usesGroupingSeparator = true
+        numberFormatter.minimumIntegerDigits = minIntegerDigits
+        numberFormatter.maximumFractionDigits = fractionDigits
+        numberFormatter.numberStyle = .decimal
 
-        let value = nf.number(from: stringValue)!.doubleValue
+        let value = numberFormatter.number(from: stringValue)!.doubleValue
         self.value = (value >= minValue) ? value : minValue
     }
 
