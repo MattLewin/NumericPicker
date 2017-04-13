@@ -14,7 +14,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		9FDC011F061FEFF1BAF91AF4 /* Pods_NumericPicker_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B530D5305B1AF5DC998DB79A /* Pods_NumericPicker_Tests.framework */; };
-		C95C14601E455EBC0001E2F8 /* NumericPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */; };
+		C95C14601E455EBC0001E2F8 /* NumericPickerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C145F1E455EBC0001E2F8 /* NumericPickerUnitTests.swift */; };
 		C95C14621E455FA40001E2F8 /* DisplayStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */; };
 		C95C14641E456E230001E2F8 /* ComponentsStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 		C9308CBC1E4BC09700CE7ED2 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swift-version"; path = "../.swift-version"; sourceTree = "<group>"; };
 		C9308CBD1E4BC0A700CE7ED2 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		C9308CBE1E4BC14B00CE7ED2 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
-		C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPickerTests.swift; sourceTree = "<group>"; };
+		C95C145F1E455EBC0001E2F8 /* NumericPickerUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericPickerUnitTests.swift; sourceTree = "<group>"; };
 		C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayStringTests.swift; sourceTree = "<group>"; };
 		C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsStringTests.swift; sourceTree = "<group>"; };
 		C968242F184A98D560DCA3A7 /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 				C9308CBD1E4BC0A700CE7ED2 /* .travis.yml */,
 				C9308CBF1E4BC45A00CE7ED2 /* Metadata */,
 				607FACD21AFB9204008FA782 /* Example for NumericPicker */,
-				607FACE81AFB9204008FA782 /* Tests */,
+				607FACE81AFB9204008FA782 /* Unit Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D4F2CB4B93310DE15B1621B4 /* Pods */,
 				51CCAAA681F6E05A5CB90203 /* Frameworks */,
@@ -129,14 +129,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
+		607FACE81AFB9204008FA782 /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C95C14631E456E230001E2F8 /* ComponentsStringTests.swift */,
 				C95C14611E455FA40001E2F8 /* DisplayStringTests.swift */,
-				C95C145F1E455EBC0001E2F8 /* NumericPickerTests.swift */,
+				C95C145F1E455EBC0001E2F8 /* NumericPickerUnitTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
+			name = "Unit Tests";
 			path = Tests;
 			sourceTree = "<group>";
 		};
@@ -384,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95C14601E455EBC0001E2F8 /* NumericPickerTests.swift in Sources */,
+				C95C14601E455EBC0001E2F8 /* NumericPickerUnitTests.swift in Sources */,
 				C95C14641E456E230001E2F8 /* ComponentsStringTests.swift in Sources */,
 				C95C14621E455FA40001E2F8 /* DisplayStringTests.swift in Sources */,
 			);
