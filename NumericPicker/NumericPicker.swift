@@ -42,6 +42,7 @@ import UIKit
     public var font = UIFont.preferredFont(forTextStyle: .body) {
         didSet {
             picker.reloadAllComponents()
+            generateAccessibilityLabels()
             resize()
         }
     }
@@ -60,6 +61,7 @@ import UIKit
         didSet {
             numberFormatter.locale = locale
             updateAppearance(animated: false)
+            generateAccessibilityLabels()
             resize()
         }
     }
@@ -70,6 +72,7 @@ import UIKit
     @IBInspectable public var fractionDigits: Int = 0 {
         didSet {
             updateAppearance(animated: false)
+            generateAccessibilityLabels()
             resize()
         }
     }
@@ -78,6 +81,7 @@ import UIKit
     @IBInspectable public var minIntegerDigits: Int = 1 {
         didSet {
             updateAppearance(animated: false)
+            generateAccessibilityLabels()
             resize()
         }
     }
@@ -123,6 +127,9 @@ import UIKit
     /// The `UIPickerView` embedded within this control
     fileprivate(set) var picker: UIPickerView = UIPickerView()
 
+    /// The accessibility labels for each component of the picker
+    fileprivate var accessibilityLabels: [String]?
+
     /// We rely so heavily on `NumberFormatter`, that we keep one instantiated as a property
     fileprivate let numberFormatter = NumberFormatter()
 
@@ -161,6 +168,7 @@ import UIKit
         numberFormatter.usesGroupingSeparator = true
         picker.delegate = self
         picker.dataSource = self
+        picker.isAccessibilityElement = false
         addSubview(picker)
     }
 
@@ -251,6 +259,101 @@ import UIKit
     // MARK: - Utility functions
 
     /**
+     Produce the set of accessibility labels based on the number of integer and fraction digits and store them in the
+     `accessibilityLabels` property.
+
+     For integer components greater than seven and fraction components greater than three, the label will be represented
+     as exponents. (i.e., *1E10* for one trillion and *1E-4* for ten-thousandths.) For everything in between, the label
+     will be the descriptor for that digit place. (i.e., "millions" or "tenths")
+     */
+    fileprivate func generateAccessibilityLabels() {
+        let componentParts = componentsString.components(separatedBy: numberFormatter.decimalSeparator)
+        let integerPortion = componentParts[0]
+        accessibilityLabels = [String]()
+
+        var digitIndex = 1
+        for character in integerPortion.characters {
+            guard character != numberFormatter.groupingSeparator.characters.first! else {
+                accessibilityLabels?.append(NSLocalizedString("thousands separator",
+                                                              comment: "the separator between digit groupings"))
+                continue
+            }
+
+            switch (minIntegerDigits - digitIndex) {
+            case 0:
+                accessibilityLabels?.append(NSLocalizedString("ones",
+                                                              comment: "the ones or units column"))
+
+            case 1:
+                accessibilityLabels?.append(NSLocalizedString("tens",
+                                                              comment: "the tens column"))
+
+            case 2:
+                accessibilityLabels?.append(NSLocalizedString("hundreds",
+                                                              comment: "the hundreds column"))
+
+            case 3:
+                accessibilityLabels?.append(NSLocalizedString("thousands",
+                                                              comment: "the thousands column"))
+
+            case 4:
+                accessibilityLabels?.append(NSLocalizedString("ten thousands",
+                                                              comment: "the ten thousands column"))
+
+            case 5:
+                accessibilityLabels?.append(NSLocalizedString("hundred thousands",
+                                                              comment: "the hundred thousands column"))
+
+            case 6:
+                accessibilityLabels?.append(NSLocalizedString("millions",
+                                                              comment: "the millions column"))
+
+            default:
+                numberFormatter.maximumIntegerDigits = 1
+                numberFormatter.maximumFractionDigits = 0
+                numberFormatter.numberStyle = .scientific
+                let magnitudeNumber = Decimal(sign: .plus, exponent: (minIntegerDigits - digitIndex), significand: 1)
+                let magnitudeString = numberFormatter.string(from: magnitudeNumber as NSDecimalNumber)
+                accessibilityLabels?.append(magnitudeString!)
+            }
+
+            digitIndex += 1
+        }
+
+        guard componentParts.count == 2 else { return }
+
+        let fractionPortion = componentParts[1]
+
+        accessibilityLabels?.append(NSLocalizedString("decimal point",
+                                                      comment: "the separator between integer and fractional portions"))
+
+        for index in 0..<fractionPortion.characters.count {
+
+            switch index {
+            case 0:
+                accessibilityLabels?.append(NSLocalizedString("tenths",
+                                                              comment: "the tenths (0.1) column"))
+
+            case 1:
+                accessibilityLabels?.append(NSLocalizedString("hundredths",
+                                                              comment: "the hundredths (0.01) column"))
+
+            case 2:
+                accessibilityLabels?.append(NSLocalizedString("thousandths",
+                                                              comment: "the thousandths (0.001) column"))
+
+            default:
+                numberFormatter.maximumIntegerDigits = 1
+                numberFormatter.maximumFractionDigits = 0
+                numberFormatter.numberStyle = .scientific
+                let magnitudeNumber = Decimal(sign: .minus, exponent: index + 1, significand: 1)
+                let magnitudeString = numberFormatter.string(from: magnitudeNumber as NSDecimalNumber)
+                accessibilityLabels?.append(magnitudeString!)
+            }
+        }
+    }
+
+    /**
 
      - parameter value: the number for which to determine the integer digits (say that ten times fast)
 
@@ -266,6 +369,16 @@ import UIKit
         } while (intValue != 0)
 
         return digits
+    }
+}
+
+// MARK: - UIPickerViewAccessibilityDelegate
+
+extension NumericPicker: UIPickerViewAccessibilityDelegate {
+
+    public func pickerView(_ pickerView: UIPickerView, accessibilityLabelForComponent component: Int) -> String? {
+        return accessibilityLabels?[component] ??
+            NSLocalizedString("unknown picker wheel #\(component)", comment: "voice over label for unknown picker component")
     }
 }
 
@@ -370,6 +483,8 @@ extension NumericPicker: UIPickerViewDelegate {
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
         pickerLabel.text = title
         pickerLabel.font = font
+        pickerLabel.accessibilityTraits = UIAccessibilityTraitAdjustable
+        pickerLabel.accessibilityValue = title
         pickerLabel.sizeToFit()
         return pickerLabel
     }
