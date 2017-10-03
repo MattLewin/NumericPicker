@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
 [![License](https://img.shields.io/cocoapods/l/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
 [![Platform](https://img.shields.io/cocoapods/p/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
-[![Swift Version](https://img.shields.io/badge/swift-3.0-blue.svg?style=flat)](https://swift.org)
+[![Swift Version](https://img.shields.io/badge/swift-4.0-blue.svg?style=flat)](https://swift.org)
 [![CI Status](http://img.shields.io/travis/MattLewin/NumericPicker.svg?style=flat)](https://travis-ci.org/MattLewin/NumericPicker)
 
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/pods/NumericPicker)
@@ -14,7 +14,7 @@
 
 ## Description
 
-NumericPicker is a drop-in iOS picker control written in Swift 3. It simplifies the creation of pickers that allow
+NumericPicker is a drop-in iOS picker control written in Swift 4. It simplifies the creation of pickers that allow
 your users to specify numbers by digit. It automatically uses the proper grouping and decimal separator for the
 current (or specified) locale. You can easily dictate the number of integer and decimal places in the controller.
 
@@ -37,8 +37,8 @@ current (or specified) locale. You can easily dictate the number of integer and 
 ---
 
 ## Minimum Requirements
-* Xcode 8.2
-* iOS 9.3
+* Xcode 9.0+
+* iOS 10.3+
 
 ## Example
 

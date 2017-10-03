@@ -1,3 +1,9 @@
+# 0.4.0
+* Update for Swift 4
+* Add accessibility labels to NumericPicker, thus facilitating voice over and UI testing
+* Simplify the code by replacing individual NumberFormatter local variables with an instance-level NumberFormatter
+* Rename NumericPickerTests to NumericPickerUnitTests
+
 # 0.3.1
 * Send '.valueChanged' message only when the numeric value of the picker changes, rather than when other factors (i.e., minimum
   fraction or maximum integer digits changes). This means the 'displayString' will need to be obtained after setting one of these
