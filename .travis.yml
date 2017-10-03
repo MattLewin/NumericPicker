@@ -11,10 +11,10 @@ cache:
  - cocoapods
 podfile: Example/Podfile
 before_install:
-- rvm use 2.3.1
-- gem install cocoapods --no-document
-- gem install xcpretty --no-document
-- pod install --project-directory=Example --repo-update
+ - rvm install 2.3.1 && rvm use 2.3.1
+ - gem install cocoapods --no-document
+ - gem install xcpretty --no-document
+ - pod install --project-directory=Example --repo-update
 script:
-- set -o pipefail && travis_retry xcodebuild test -workspace Example/NumericPicker.xcworkspace -scheme NumericPicker-Example -destination 'platform=iOS Simulator,name=iPhone 7s,OS=10.3' ONLY_ACTIVE_ARCH=NO | xcpretty
+ - set -o pipefail && travis_retry xcodebuild test -workspace Example/NumericPicker.xcworkspace -scheme NumericPicker-Example -destination 'platform=iOS Simulator,name=iPhone 7s,OS=10.3' ONLY_ACTIVE_ARCH=NO | xcpretty
 #- pod lib lint
