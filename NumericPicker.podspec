@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NumericPicker'
-  s.version          = '0.4.1'
+  s.version          = '0.4.0'
   s.summary          = 'iOS picker for easily selecting numbers by digit. (Swift 4)'
 
   s.description      = <<-DESC
