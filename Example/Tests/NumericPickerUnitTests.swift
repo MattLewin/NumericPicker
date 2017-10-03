@@ -32,7 +32,7 @@ class NumericPickerTests: XCTestCase {
 
     class TestingViewController: UIViewController {
         
-        func valueChanged(_ sender: NumericPicker) {
+        @objc func valueChanged(_ sender: NumericPicker) {
             print("[\(#function)]")
         }
     }

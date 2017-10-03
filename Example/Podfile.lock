@@ -1,22 +1,22 @@
 PODS:
-  - Nimble (5.1.1)
-  - NumericPicker (0.1.0)
-  - Quick (1.0.0)
+  - Nimble (7.0.2)
+  - NumericPicker (0.4.1)
+  - Quick (1.2.0)
 
 DEPENDENCIES:
-  - Nimble (~> 5.1.1)
+  - Nimble
   - NumericPicker (from `../`)
-  - Quick (~> 1.0.0)
+  - Quick
 
 EXTERNAL SOURCES:
   NumericPicker:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
-  NumericPicker: 262d7e76d5a098487700980bb8feb84774fdda3f
-  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  NumericPicker: ef83772713124f971831dabf48a7b4cb27f2e9e9
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
-PODFILE CHECKSUM: aafd8be7aa0e99ed70ce71db992c826d2622d0f3
+PODFILE CHECKSUM: d40757e8615782e9a960324317ee5698eea85724
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

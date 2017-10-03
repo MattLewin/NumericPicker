@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Actions
-    func codeValueChanged() {
+    @objc func codeValueChanged() {
         codePickerValue.text = codeNumericPicker.displayString
     }
 

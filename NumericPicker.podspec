@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NumericPicker'
-  s.version          = '0.3.1'
-  s.summary          = 'iOS picker for easily selecting numbers by digit. (Swift 3)'
+  s.version          = '0.4.1'
+  s.summary          = 'iOS picker for easily selecting numbers by digit. (Swift 4)'
 
   s.description      = <<-DESC
         NumericPicker is a drop-in iOS picker control written in Swift 3. It makes simplifies the creation of pickers that allow
@@ -24,9 +24,9 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/MattLewin/NumericPicker.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/mlewin72'
 
-  s.ios.deployment_target = '9.3'
+  s.ios.deployment_target = '10.3'
 
   s.source_files = 'NumericPicker/**/*'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
   s.frameworks = 'UIKit'
 end
