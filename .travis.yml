@@ -11,7 +11,7 @@ cache:
  - cocoapods
 podfile: Example/Podfile
 before_install:
-- rvm use 2.4.1
+- rvm use 2.3.1
 - gem install cocoapods --no-document
 - gem install xcpretty --no-document
 - pod install --project-directory=Example --repo-update
