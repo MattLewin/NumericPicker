@@ -210,7 +210,6 @@ import UIKit
     }
 
     /**
-
      - parameter value: the new value displayed in the picker
      - parameter intDigits: the number of digits displayed to the **left** of the decimal separator
      - parameter fractionDigits: the number of digits displayed to the **right** of the decimal separator
@@ -229,7 +228,6 @@ import UIKit
     }
 
     /**
-
      - parameter value: the new value displayed in the picker
      - parameter fractionDigits: the number of digits displayed to the right of the decimal separator
 
@@ -382,10 +380,8 @@ extension NumericPicker: UIPickerViewAccessibilityDelegate {
     }
 }
 
-// MARK: -
+// MARK: - UIPickerViewDataSource
 extension NumericPicker: UIPickerViewDataSource {
-
-    // MARK: UIPickerViewDataSource
 
     /**
      Called by the picker view when it needs the number of components.
