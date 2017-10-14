@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NumericPicker  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="NumericPicker  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">NumericPicker Docs</a> (95% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">NumericPicker Reference</a>
+        <img id="carat" src="img/carat.png" />
+        NumericPicker  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/NumericPicker.html">NumericPicker</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='numericpicker' class='heading'>NumericPicker</h1>
+
+<p><a href="http://cocoapods.org/pods/NumericPicker"><img src="https://img.shields.io/cocoapods/v/NumericPicker.svg?style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/NumericPicker"><img src="https://img.shields.io/cocoapods/l/NumericPicker.svg?style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/NumericPicker"><img src="https://img.shields.io/cocoapods/p/NumericPicker.svg?style=flat" alt="Platform"></a>
+<a href="https://swift.org"><img src="https://img.shields.io/badge/swift-4.0-blue.svg?style=flat" alt="Swift Version"></a>
+<a href="https://travis-ci.org/MattLewin/NumericPicker"><img src="http://img.shields.io/travis/MattLewin/NumericPicker.svg?style=flat" alt="CI Status"></a></p>
+
+<p><a href="https://cocoapods.org/pods/NumericPicker"><img src="https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat" alt="CocoaPods"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage"></a>
+<a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-not%20yet-red.svg?style=flat" alt="Swift Package Manager"></a></p>
+
+<p><a href="https://github.com/MattLewin/NumericPicker/releases"><img src="https://img.shields.io/github/release/MattLewin/NumericPicker.svg" alt="GitHub release"></a></p>
+<h2 id='description' class='heading'>Description</h2>
+
+<p>NumericPicker is a drop-in iOS picker control written in Swift 4. It simplifies the creation of pickers that allow
+your users to specify numbers by digit. It automatically uses the proper grouping and decimal separator for the
+current (or specified) locale. You can easily dictate the number of integer and decimal places in the controller.</p>
+
+<p><img src="https://cl.ly/j5XO/Screen%20Recording%202017-02-08%20at%2003.36%20PM.gif" alt="Sample Video"></p>
+
+<p><em>Note that the <q>Picker Value</q> field is there for demonstration purposes only. It is not included in the
+<code><a href="Classes/NumericPicker.html">NumericPicker</a></code> control.</em></p>
+
+<hr>
+<h2 id='table-of-contents' class='heading'>Table of Contents</h2>
+
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#minimum-requirements">Minimum Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#author">Author</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<hr>
+<h2 id='minimum-requirements' class='heading'>Minimum Requirements</h2>
+
+<ul>
+<li>Xcode 9.0+</li>
+<li>iOS 10.3+</li>
+</ul>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>This repo contains an example project demonstrating how to use the <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> control from Interface Builder and
+from code.</p>
+
+<p>To run the example project, clone the repo, open <code>NumericPicker.xcodeproj</code> and run the <code>NumericPicker-Example</code> scheme</p>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>NumericPicker is available through <a href="http://cocoapods.org">CocoaPods</a>. </p>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Swift and Objective-C that simplifies the use of 3rd-party
+libraries like <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> in your projects.</p>
+
+<p>First, add the following line to your <a href="http://guides.cocoapods.org/using/using-cocoapods.html">Podfile</a>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"NumericPicker"</span>
+</code></pre>
+
+<p>Second, install <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> into your project:</p>
+<pre class="highlight shell"><code>pod install
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and
+provides you with binary frameworks. </p>
+
+<p>To integrate <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"MattLewin/NumericPicker"</span>
+</code></pre>
+
+<p>Run <code>carthage update</code> to build the framework and drag the built <code>NumericPicker.framework</code> (in Carthage/Build/iOS folder)
+into your Xcode project (Linked Frameworks and Libraries in <code>Targets</code>).</p>
+<h3 id='swift-package-manager-spm' class='heading'>Swift Package Manager (SPM)</h3>
+
+<p>The <a href="https://github.com/apple/swift-package-manager">Swift Package Manager</a> does not yet support importing <code>UIKit</code> or compilation for
+<code>iOS</code>. Thus, <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> can not yet be used with the SPM.</p>
+<h3 id='manually' class='heading'>Manually</h3>
+
+<ol>
+<li>Copy <code>NumericPicker.swift</code> into your project</li>
+<li>Have a nice day</li>
+</ol>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p><code><a href="Classes/NumericPicker.html">NumericPicker</a></code> is a subclass of <a href="https://developer.apple.com/reference/uikit/uicontrol"><code>UIControl</code></a>. In this way it
+is more like <a href="https://developer.apple.com/reference/uikit/uidatepicker"><code>UIDatePicker</code></a> than it is like 
+<a href="https://developer.apple.com/reference/uikit/uipickerview"><code>UIPickerView</code></a>. What this means for you is that you don&rsquo;t 
+need to implement <a href="https://developer.apple.com/reference/uikit/uipickerviewdatasource"><code>UIPickerViewDataSource</code></a> or
+<a href="https://developer.apple.com/reference/uikit/uipickerviewdelegate"><code>UIPickerViewDelegate</code></a>.</p>
+
+<p><em>Note that the provided <a href="#example">Example</a> demonstrates everything detailed below.</em></p>
+<h3 id='configurable-properties' class='heading'>Configurable Properties</h3>
+
+<ul>
+<li><code>value: Double</code> - The value displayed in the picker. Set this value to update the picker programatically. 
+<em>(Default: 0)</em></li>
+<li><code>minIntegerDigits: Int</code> - The minimum number of integer digits (digits to the left of the decimal separator) to
+include in the picker. Think of this as zero-padding the picker. If <code>value</code> requires more than this minimum, the picker
+will automatically meet this requirement. (This is probably not what you want, though.) <em>(Default: 1)</em><br></li>
+<li><code>fractionDigits: Int</code> - The number of digits to the right of the decimal separator. <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> guarantees
+exactly this many fractional digits will be displayed. You can use this to achieve rounding or zero-padding of values
+to the right of the decimal separator. <em>(Default: 0)</em></li>
+<li><code>locale: Locale</code> - The locale used to format the numeric values. Use this if you want numbers formatted with
+separators other than those used by the device locale. <em>(Default: current device locale)</em></li>
+<li><code>font: UIFont</code> - The font used to format the picker components. <em>(Default: <code>Body</code> text style)</em></li>
+<li><code>displayString: String</code> - <strong>READ ONLY</strong> - The text representation of <code>value</code>. This string will contain locale-specific
+grouping and decimal separators. It will have exactly <code>fractionDigits</code> digits to the right of the decimal separator and 
+the minimum number of integer places necessary to represent <code>value</code>.</li>
+</ul>
+<h3 id='interface-builder' class='heading'>Interface Builder</h3>
+
+<p>To use <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> with Interface Builder, add a <a href="https://developer.apple.com/reference/uikit/uicontrol"><code>UIControl</code></a>
+to your storyboard or XIB, and then set the <q>Custom Class</q> to <code><a href="Classes/NumericPicker.html">NumericPicker</a></code>. Connect the <q>`Value Changed`</q> event to
+a function in your view controller. (Be certain to set the <q>Type</q> to <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> as shown below.)</p>
+
+<p><img src="https://cl.ly/1s1Q1E3J3w1c/IBAction.png" alt="IBAction"></p>
+
+<p>Within that function, you can access <code>sender.displayString</code> or <code>sender.value</code> as needed.   </p>
+<h4 id='em-cocoapods-or-manually-em' class='heading'><em>Cocoapods or Manually</em></h4>
+
+<p>If you are using Cocoapods or have dropped <code>NumericPicker.swift</code> into your code, you can configure <code>value</code>,
+<code>minIntegerDigits</code>, and <code>fractionDigits</code> from the <q>Attributes</q> inspector.</p>
+
+<p><img src="https://cl.ly/j5h1/NumericPicker-IB.png" alt="IB NumericPicker"></p>
+<h4 id='em-carthage-em' class='heading'><em>Carthage</em></h4>
+
+<p>Xcode does not currently (as of 9.0) support <code>@IBInspectable</code> properties from external frameworks. The means
+you cannot configure the above properties in IB. You can, however, trick IB into rendering <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> with its
+default values by adding the following code to one of your view controllers:</p>
+<pre class="highlight swift"><code><span class="kd">@IBDesignable</span> <span class="kd">extension</span> <span class="kt">NumericPicker</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre>
+<h3 id='code' class='heading'>Code</h3>
+
+<p>Add a <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> control from code as you would any other subview. Here is the code from 
+<code>NumericPicker-Example/ViewController.swift</code> to produce the bottom sample <code><a href="Classes/NumericPicker.html">NumericPicker</a></code>. Note that it is typically unnecessary
+to set <code>locale</code>, as <code><a href="Classes/NumericPicker.html">NumericPicker</a></code> will use the current device locale by default.</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">codeNumericPicker</span> <span class="o">=</span> <span class="kt">NumericPicker</span><span class="p">()</span>
+<span class="n">codeNumericPicker</span><span class="o">.</span><span class="n">minIntegerDigits</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">codeNumericPicker</span><span class="o">.</span><span class="n">fractionDigits</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">codeNumericPicker</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">76543.21</span>
+<span class="n">codeNumericPicker</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kt">Locale</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"de-DE"</span><span class="p">)</span>
+<span class="n">codeNumericPicker</span><span class="o">.</span><span class="nf">addTarget</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="kd">#selector(</span><span class="nf">codeValueChanged</span><span class="kd">)</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">valueChanged</span><span class="p">)</span>
+<span class="n">codePickerStack</span><span class="o">.</span><span class="nf">addArrangedSubview</span><span class="p">(</span><span class="n">codeNumericPicker</span><span class="p">)</span>
+
+</code></pre>
+<h2 id='author' class='heading'>Author</h2>
+
+<p>Matt Lewin, <a href="mailto:matt@mogroups.com">matt@mogroups.com</a></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>NumericPicker is available under the MIT license. See <a href="https://raw.githubusercontent.com/MattLewin/NumericPicker/master/LICENSE.md">LICENSE.md</a> 
+for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/MattLewin/NumericPicker" target="_blank" rel="external">Matt Lewin</a>. All rights reserved. (Last updated: 2017-10-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

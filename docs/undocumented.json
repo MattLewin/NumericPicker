@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Matt/src/Cocoapods-dev/NumericPicker/Sources/NumericPicker.swift",
+      "line": 351,
+      "symbol": "NumericPicker.pickerView(_:accessibilityLabelForComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Matt/src/Cocoapods-dev/NumericPicker"
+}
