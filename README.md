@@ -45,11 +45,7 @@ current (or specified) locale. You can easily dictate the number of integer and 
 This repo contains an example project demonstrating how to use the `NumericPicker` control from Interface Builder and
 from code.
 
-To run the example project, clone the repo, and run `pod install` from the `Example` directory, and then open 
-`NumericPicker.xcworkspace`.
-
-*Note: The example assumes you are using Cocoapods. Please create an issue if you would like something else. (Or do it 
-yourself, and submit a pull request.* :smiley:*)*
+To run the example project, clone the repo, open `NumericPicker.xcodeproj` and run the `NumericPicker-Example` scheme
 
 ## Installation
 

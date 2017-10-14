@@ -4,17 +4,12 @@
 
 osx_image: xcode9
 language: objective-c
-xcode_workspace: Example/NumericPicker.xcworkspace
-xcode_scheme: Example/NumericPicker-Example
+xcode_project: NumericPicker.xcodeproj
+xcode_scheme: NumericPicker
 cache:
  - bundler
- - cocoapods
-podfile: Example/Podfile
+ - xcpretty
 before_install:
- - rvm install 2.3.1 && rvm use 2.3.1
- - gem install cocoapods --no-document
  - gem install xcpretty --no-document
- - pod install --project-directory=Example --repo-update
 script:
- - set -o pipefail && travis_retry xcodebuild test -workspace Example/NumericPicker.xcworkspace -scheme NumericPicker-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=NO | xcpretty
-#- pod lib lint
+ - set -o pipefail && travis_retry xcodebuild test -project NumericPicker.xcodeproj -scheme NumericPicker -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' ONLY_ACTIVE_ARCH=NO | xcpretty

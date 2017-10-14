@@ -256,6 +256,30 @@ import UIKit
 
     // MARK: - Utility functions
 
+    static let integerPlaceDescriptors = [
+        NSLocalizedString("ones", comment: "the ones or units column"),
+        NSLocalizedString("tens", comment: "the tens column"),
+        NSLocalizedString("hundreds", comment: "the hundreds column"),
+        NSLocalizedString("thousands", comment: "the thousands column"),
+        NSLocalizedString("ten thousands", comment: "the ten thousands column"),
+        NSLocalizedString("hundred thousands", comment: "the hundred thousands column"),
+        NSLocalizedString("millions", comment: "the millions column"),
+        ]
+
+    static let fractionPlaceDescriptors = [
+        NSLocalizedString("tenths", comment: "the tenths (0.1) column"),
+        NSLocalizedString("hundredths", comment: "the hundredths (0.01) column"),
+        NSLocalizedString("thousandths", comment: "the thousandths (0.001) column"),
+        ]
+
+    fileprivate func exponentString(for: FloatingPointSign, magnitude: Int) -> String {
+        numberFormatter.maximumIntegerDigits = 1
+        numberFormatter.maximumFractionDigits = 0
+        numberFormatter.numberStyle = .scientific
+        let magnitudeNumber = Decimal(sign: .plus, exponent: magnitude, significand: 1)
+        return numberFormatter.string(from: magnitudeNumber as NSDecimalNumber)!
+    }
+
     /**
      Produce the set of accessibility labels based on the number of integer and fraction digits and store them in the
      `accessibilityLabels` property.
@@ -267,55 +291,21 @@ import UIKit
     fileprivate func generateAccessibilityLabels() {
         let componentParts = componentsString.components(separatedBy: numberFormatter.decimalSeparator)
         let integerPortion = componentParts[0]
-        accessibilityLabels = [String]()
-
         var digitIndex = 1
-        for character in integerPortion.characters {
-            guard character != numberFormatter.groupingSeparator.characters.first! else {
-                accessibilityLabels?.append(NSLocalizedString("thousands separator",
-                                                              comment: "the separator between digit groupings"))
-                continue
+
+        accessibilityLabels = integerPortion.characters.map { character -> String in
+            guard character != numberFormatter.groupingSeparator.first! else {
+                return NSLocalizedString("thousands separator", comment: "the separator between digit groupings")
             }
 
-            switch (minIntegerDigits - digitIndex) {
-            case 0:
-                accessibilityLabels?.append(NSLocalizedString("ones",
-                                                              comment: "the ones or units column"))
-
-            case 1:
-                accessibilityLabels?.append(NSLocalizedString("tens",
-                                                              comment: "the tens column"))
-
-            case 2:
-                accessibilityLabels?.append(NSLocalizedString("hundreds",
-                                                              comment: "the hundreds column"))
-
-            case 3:
-                accessibilityLabels?.append(NSLocalizedString("thousands",
-                                                              comment: "the thousands column"))
-
-            case 4:
-                accessibilityLabels?.append(NSLocalizedString("ten thousands",
-                                                              comment: "the ten thousands column"))
-
-            case 5:
-                accessibilityLabels?.append(NSLocalizedString("hundred thousands",
-                                                              comment: "the hundred thousands column"))
-
-            case 6:
-                accessibilityLabels?.append(NSLocalizedString("millions",
-                                                              comment: "the millions column"))
-
-            default:
-                numberFormatter.maximumIntegerDigits = 1
-                numberFormatter.maximumFractionDigits = 0
-                numberFormatter.numberStyle = .scientific
-                let magnitudeNumber = Decimal(sign: .plus, exponent: (minIntegerDigits - digitIndex), significand: 1)
-                let magnitudeString = numberFormatter.string(from: magnitudeNumber as NSDecimalNumber)
-                accessibilityLabels?.append(magnitudeString!)
-            }
-
+            let place = minIntegerDigits - digitIndex
             digitIndex += 1
+            if place < NumericPicker.integerPlaceDescriptors.count {
+                return NumericPicker.integerPlaceDescriptors[place]
+            }
+            else {
+                return exponentString(for: .plus, magnitude: place)
+            }
         }
 
         guard componentParts.count == 2 else { return }
@@ -325,28 +315,12 @@ import UIKit
         accessibilityLabels?.append(NSLocalizedString("decimal point",
                                                       comment: "the separator between integer and fractional portions"))
 
-        for index in 0..<fractionPortion.characters.count {
-
-            switch index {
-            case 0:
-                accessibilityLabels?.append(NSLocalizedString("tenths",
-                                                              comment: "the tenths (0.1) column"))
-
-            case 1:
-                accessibilityLabels?.append(NSLocalizedString("hundredths",
-                                                              comment: "the hundredths (0.01) column"))
-
-            case 2:
-                accessibilityLabels?.append(NSLocalizedString("thousandths",
-                                                              comment: "the thousandths (0.001) column"))
-
-            default:
-                numberFormatter.maximumIntegerDigits = 1
-                numberFormatter.maximumFractionDigits = 0
-                numberFormatter.numberStyle = .scientific
-                let magnitudeNumber = Decimal(sign: .minus, exponent: index + 1, significand: 1)
-                let magnitudeString = numberFormatter.string(from: magnitudeNumber as NSDecimalNumber)
-                accessibilityLabels?.append(magnitudeString!)
+        for index in 0..<fractionPortion.count {
+            if index < NumericPicker.fractionPlaceDescriptors.count {
+                accessibilityLabels?.append(NumericPicker.fractionPlaceDescriptors[index])
+            }
+            else {
+                accessibilityLabels?.append(exponentString(for: .minus, magnitude: index + 1))
             }
         }
     }

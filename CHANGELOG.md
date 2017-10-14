@@ -1,3 +1,6 @@
+# 0.5.0
+* Completely reorganize the file layout to better support SPM, Carthage and Cocoapods, as well as make it easier for users to incorporate into their projects
+
 # 0.4.0
 * Update for Swift 4
 * Add accessibility labels to NumericPicker, thus facilitating voice over and UI testing

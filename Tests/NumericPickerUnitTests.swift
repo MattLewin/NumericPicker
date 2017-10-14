@@ -48,7 +48,7 @@ class NumericPickerTests: XCTestCase {
         picker = NumericPicker()
         picker.addTarget(vc, action: #selector(TestingViewController.valueChanged(_:)), for: .valueChanged)
         picker.locale = Locale(identifier: "en-US")
-        picker.font = UIFont.monospacedDigitSystemFont(ofSize: 12, weight: UIFontWeightRegular)
+        picker.font = UIFont.monospacedDigitSystemFont(ofSize: 12, weight: UIFont.Weight.regular)
         
         vc.view.addSubview(picker)
     }
