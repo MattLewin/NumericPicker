@@ -52,6 +52,7 @@
 		C98C13C71F914BA700450415 /* ComponentsStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsStringTests.swift; sourceTree = "<group>"; };
 		C98C13C91F91575F00450415 /* DisplayStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayStringTests.swift; sourceTree = "<group>"; };
 		C98C13CB1F915B0300450415 /* NumericPickerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericPickerUnitTests.swift; sourceTree = "<group>"; };
+		C98C13CF1F92CCE000450415 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 				C98B8D3B1F91361700552D46 /* Info.plist */,
 				C98B8D551F9136A600552D46 /* LICENSE.md */,
 				C98B8D521F9136A500552D46 /* NumericPicker.podspec */,
+				C98C13CF1F92CCE000450415 /* Package.swift */,
 				C98B8D561F9136A600552D46 /* README.md */,
 				C98B8D391F91361700552D46 /* Sources */,
 				C98B8D441F91361700552D46 /* Tests */,
@@ -120,9 +122,7 @@
 		C98B8D441F91361700552D46 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C98C13C71F914BA700450415 /* ComponentsStringTests.swift */,
-				C98C13C91F91575F00450415 /* DisplayStringTests.swift */,
-				C98C13CB1F915B0300450415 /* NumericPickerUnitTests.swift */,
+				C98C13CE1F92CCA200450415 /* NumericPickerTests */,
 				C98B8D471F91361700552D46 /* Info.plist */,
 			);
 			path = Tests;
@@ -146,6 +146,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C98C13CE1F92CCA200450415 /* NumericPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C98C13C71F914BA700450415 /* ComponentsStringTests.swift */,
+				C98C13C91F91575F00450415 /* DisplayStringTests.swift */,
+				C98C13CB1F915B0300450415 /* NumericPickerUnitTests.swift */,
+			);
+			path = NumericPickerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
