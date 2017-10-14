@@ -1,5 +1,8 @@
 # 0.5.0
-* Completely reorganize the file layout to better support SPM, Carthage and Cocoapods, as well as make it easier for users to incorporate into their projects
+* Completely reorganize the file layout to better support SPM, Carthage and Cocoapods, as well as make it easier for users to incorporate
+  into their projects
+* Centralize the integer and fractional place descriptors, making the code easier to read and maintain
+* Prepare for using the Swift Package Manager, even though it does not yet support `UIKit` or `iOS`
 
 # 0.4.0
 * Update for Swift 4

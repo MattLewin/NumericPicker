@@ -84,8 +84,8 @@ into your Xcode project (Linked Frameworks and Libraries in `Targets`).
 
 ### Swift Package Manager (SPM)
 
-`NumericPicker` does not yet support the Swift Package Manager
-
+The [Swift Package Manager](https://github.com/apple/swift-package-manager) does not yet support importing `UIKit` or compilation for
+`iOS`. Thus, `NumericPicker` can not yet be used with the SPM.
 
 ### Manually
 
@@ -140,7 +140,7 @@ If you are using Cocoapods or have dropped `NumericPicker.swift` into your code,
 
 #### *Carthage*
 
-Xcode does not currently (as of 8.2) support `@IBInspectable` properties from external frameworks. The means
+Xcode does not currently (as of 9.0) support `@IBInspectable` properties from external frameworks. The means
 you cannot configure the above properties in IB. You can, however, trick IB into rendering `NumericPicker` with its
 default values by adding the following code to one of your view controllers:
 
@@ -151,8 +151,8 @@ default values by adding the following code to one of your view controllers:
 ### Code
 
 Add a `NumericPicker` control from code as you would any other subview. Here is the code from 
-`Example/ViewController.swift` to produce the bottom sample `NumericPicker`. Note that it is typically unnecessary to
-set `locale`, as `NumericPicker` will use the current device locale by default.
+`NumericPicker-Example/ViewController.swift` to produce the bottom sample `NumericPicker`. Note that it is typically unnecessary
+to set `locale`, as `NumericPicker` will use the current device locale by default.
 
 ```swift
 var codeNumericPicker = NumericPicker()
