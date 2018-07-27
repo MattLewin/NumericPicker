@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,25 +23,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-94-obd" userLabel="IB Picker Stack">
-                                <rect key="frame" x="30" y="28" width="329" height="263"/>
+                                <rect key="frame" x="16" y="28" width="343" height="263"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Interface Builder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIV-6N-h47">
-                                        <rect key="frame" x="31" y="0.0" width="267" height="26.5"/>
+                                        <rect key="frame" x="38" y="0.0" width="267" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCQ-NW-D3N" userLabel="IB Picker Label Stack">
-                                        <rect key="frame" x="0.0" y="26.5" width="329" height="20.5"/>
+                                        <rect key="frame" x="38" y="26.5" width="267" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-L6-RrW" userLabel="IB Picker Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="164.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ka-BM-xgU" userLabel="IB Picker Value">
-                                                <rect key="frame" x="164.5" y="0.0" width="164.5" height="20.5"/>
+                                                <rect key="frame" x="133.5" y="0.0" width="133.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -49,10 +49,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju9-jE-Y1x" userLabel="IB Numeric Picker" customClass="NumericPicker" customModule="NumericPicker">
-                                        <rect key="frame" x="4.5" y="47" width="320" height="216"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="HTa-fx-xdY"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="47" width="343" height="216"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="minIntegerDigits">
                                                 <integer key="value" value="6"/>
@@ -70,7 +67,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="PCQ-NW-D3N" firstAttribute="width" secondItem="xIZ-94-obd" secondAttribute="width" id="WHE-kZ-cLL"/>
+                                    <constraint firstItem="ju9-jE-Y1x" firstAttribute="leading" secondItem="xIZ-94-obd" secondAttribute="leading" id="2uy-6m-Gex"/>
+                                    <constraint firstItem="PIV-6N-h47" firstAttribute="centerX" secondItem="xIZ-94-obd" secondAttribute="centerX" id="Hgz-DI-tQQ"/>
+                                    <constraint firstItem="PCQ-NW-D3N" firstAttribute="width" secondItem="PIV-6N-h47" secondAttribute="width" id="RG4-4e-F4W"/>
+                                    <constraint firstAttribute="trailing" secondItem="ju9-jE-Y1x" secondAttribute="trailing" id="pC7-SU-dA5"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOJ-b9-7ru" userLabel="Separator">
@@ -81,16 +81,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-Tb-mCw" userLabel="Code Picker Stack">
-                                <rect key="frame" x="30" y="309" width="329" height="47"/>
+                                <rect key="frame" x="16" y="309" width="343" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added in Code (German format)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rm-AR-A2w">
-                                        <rect key="frame" x="0.0" y="0.0" width="329" height="26.5"/>
+                                        <rect key="frame" x="7" y="0.0" width="329" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fMo-yv-pOi" userLabel="Code Picker Label Stack">
-                                        <rect key="frame" x="0.0" y="26.5" width="329" height="20.5"/>
+                                        <rect key="frame" x="7" y="26.5" width="329" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Picker Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvF-4l-Kmo" userLabel="Code Picker Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="164.5" height="20.5"/>
@@ -108,20 +108,23 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="fMo-yv-pOi" firstAttribute="width" secondItem="wEt-Tb-mCw" secondAttribute="width" id="GU9-s8-04y"/>
+                                    <constraint firstItem="3rm-AR-A2w" firstAttribute="centerX" secondItem="wEt-Tb-mCw" secondAttribute="centerX" id="FOS-5D-5a6"/>
+                                    <constraint firstItem="fMo-yv-pOi" firstAttribute="centerX" secondItem="wEt-Tb-mCw" secondAttribute="centerX" id="V7D-pA-9n8"/>
+                                    <constraint firstItem="fMo-yv-pOi" firstAttribute="width" secondItem="3rm-AR-A2w" secondAttribute="width" id="sGR-BS-qkj"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hOJ-b9-7ru" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1oU-3y-3jm"/>
+                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4wJ-Ez-lr2"/>
+                            <constraint firstItem="xIZ-94-obd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Ce-zj-W6M"/>
                             <constraint firstItem="wEt-Tb-mCw" firstAttribute="top" secondItem="hOJ-b9-7ru" secondAttribute="bottom" constant="8" symbolic="YES" id="5GA-tw-cVJ"/>
                             <constraint firstItem="hOJ-b9-7ru" firstAttribute="top" secondItem="xIZ-94-obd" secondAttribute="bottom" constant="8" symbolic="YES" id="Au3-rt-j4O"/>
                             <constraint firstItem="hOJ-b9-7ru" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="LPo-7e-t5t"/>
                             <constraint firstItem="xIZ-94-obd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dko-T4-lYJ"/>
-                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="leading" secondItem="xIZ-94-obd" secondAttribute="leading" id="eQn-fE-zMc"/>
-                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="trailing" secondItem="xIZ-94-obd" secondAttribute="trailing" id="h8y-PR-Ptz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xIZ-94-obd" secondAttribute="trailing" id="s2g-1c-mj3"/>
+                            <constraint firstItem="wEt-Tb-mCw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wQb-J3-Xxk"/>
                         </constraints>
                     </view>
                     <connections>
