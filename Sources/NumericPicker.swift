@@ -189,7 +189,7 @@ import UIKit
         picker.reloadAllComponents()
         var index = 0
 
-        for char in componentsString.characters {
+        for char in componentsString {
             // Row is the numeric value of the digit string, or zero for separators
             let row = Int(String(char)) ?? 0
             picker.selectRow(row, inComponent: index, animated: animated)
@@ -281,7 +281,7 @@ import UIKit
         let integerPortion = componentParts[0]
         var digitIndex = 1
 
-        accessibilityLabels = integerPortion.characters.map { character -> String in
+        accessibilityLabels = integerPortion.map { character -> String in
             guard character != numberFormatter.groupingSeparator.first! else {
                 return NSLocalizedString("thousands separator", comment: "the separator between digit groupings")
             }
@@ -353,7 +353,7 @@ extension NumericPicker: UIPickerViewDataSource {
      - returns: The number of components (or “columns”) that the picker view should display.
      */
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return componentsString.characters.count
+        return componentsString.count
     }
 
     /**
