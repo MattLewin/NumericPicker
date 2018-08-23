@@ -1,3 +1,8 @@
+# 0.6.0
+* Handle picker font size adjustment, fix layout issues - [Rotem Rubnov](https://github.com/rubnov) of [100 Grams Software](https://100grams.io)
+* Update project to Xcode 9.4.1 recommended settings
+* Access String characters directly, per String changes in Swift 4 ([SE-0163](https://github.com/apple/swift-evolution/blob/master/proposals/0163-string-revision-1.md))
+
 # 0.5.0
 * Completely reorganize the file layout to better support SPM, Carthage and Cocoapods, as well as make it easier for users to incorporate
   into their projects
