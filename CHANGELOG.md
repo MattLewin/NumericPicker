@@ -1,3 +1,8 @@
+# 1.0.0
+* The picker labels now adjust to changes in dynamic font sizes -- fixes a long-standing issue
+* Restore default picker font size to Body -- it was accidentally changed to Title 1
+* Remove hardcoded 54-point font from IB picker example
+
 # 0.6.0
 * Handle picker font size adjustment, fix layout issues - [Rotem Rubnov](https://github.com/rubnov) of [100 Grams Software](https://100grams.io)
 * Update project to Xcode 9.4.1 recommended settings
