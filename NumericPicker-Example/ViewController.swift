@@ -43,7 +43,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ibNumericPicker.value = 12345.6
-
+        ibNumericPicker.font = UIFont.systemFont(ofSize: 54)
+        
         // Configure a NumericPicker in code
         codeNumericPicker.minIntegerDigits = 6
         codeNumericPicker.fractionDigits = 3

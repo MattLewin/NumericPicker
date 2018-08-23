@@ -39,11 +39,10 @@ import UIKit
     // MARK: - Properties
 
     /// The font for the components of the picker. (defaults to `Body`)
-    public var font = UIFont.preferredFont(forTextStyle: .body) {
+    @IBInspectable public var font = UIFont.preferredFont(forTextStyle: .title1) {
         didSet {
             picker.reloadAllComponents()
             generateAccessibilityLabels()
-            resize()
         }
     }
 
@@ -62,7 +61,6 @@ import UIKit
             numberFormatter.locale = locale
             updateAppearance(animated: false)
             generateAccessibilityLabels()
-            resize()
         }
     }
 
@@ -73,7 +71,6 @@ import UIKit
         didSet {
             updateAppearance(animated: false)
             generateAccessibilityLabels()
-            resize()
         }
     }
 
@@ -82,7 +79,6 @@ import UIKit
         didSet {
             updateAppearance(animated: false)
             generateAccessibilityLabels()
-            resize()
         }
     }
 
@@ -110,7 +106,6 @@ import UIKit
 
             guard justInstantiated else { return }
             justInstantiated = false
-            resize()
         }
     }
 
@@ -170,21 +165,14 @@ import UIKit
         picker.dataSource = self
         picker.isAccessibilityElement = false
         addSubview(picker)
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        addConstraint(NSLayoutConstraint(item: picker, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: picker, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: picker, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: picker, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0))
     }
 
     // MARK: - Picker Maintenance
-
-    /**
-     Resizes the `NumericPicker` to contain the all components. Called when a property affecting the picker's
-     appearance changes.
-     */
-    func resize() {
-        var pickerSize = picker.bounds.size
-        pickerSize.width = widthOfPickerView()
-        picker.bounds.size = pickerSize
-        frame.size = pickerSize
-        picker.frame = bounds
-    }
 
     /**
      Recalculates `displayString` and `componentsString` and refreshes the picker view. Called whenever a property
@@ -471,5 +459,11 @@ extension NumericPicker: UIPickerViewDelegate {
         let pickerLabel = self.pickerView(pickerView, viewForRow: 0, forComponent: component, reusing: nil)
         let width = pickerLabel.bounds.width + 8
         return width
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        let pickerLabel = self.pickerView(pickerView, viewForRow: 0, forComponent: component, reusing: nil)
+        let height = pickerLabel.bounds.height + 8
+        return height
     }
 }
