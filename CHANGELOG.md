@@ -1,3 +1,6 @@
+# 1.1.1
+* Remove the obsolete (and build-breaking) versioning artifact forcing this cocoapod to build as Swift 4.0 
+
 # 1.1.0
 * Update minimum requirements to be Xcode 10, iOS 12, and Swift 4.2
 

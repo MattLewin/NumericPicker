@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
 [![License](https://img.shields.io/cocoapods/l/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
 [![Platform](https://img.shields.io/cocoapods/p/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)
-[![Swift Version](https://img.shields.io/badge/swift-4.0-blue.svg?style=flat)](https://swift.org)
+[![Swift Version](https://img.shields.io/badge/swift-4.2-blue.svg?style=flat)](https://swift.org)
 [![CI Status](http://img.shields.io/travis/MattLewin/NumericPicker.svg?style=flat)](https://travis-ci.org/MattLewin/NumericPicker)
 
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/pods/NumericPicker)
