@@ -1,3 +1,7 @@
+# 1.0.1
+* Fix [issue #4](https://github.com/MattLewin/NumericPicker/issues/4): work around an iOS 12 SDK bug with picker view heights
+* Make NumericPicker example respond to changes in dynamic fonts
+
 # 1.0.0
 * The picker labels now adjust to changes in dynamic font sizes -- fixes a long-standing issue
 * Restore default picker font size to Body -- it was accidentally changed to Title 1
