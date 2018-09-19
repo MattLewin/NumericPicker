@@ -448,7 +448,7 @@ extension NumericPicker: UIPickerViewDelegate {
         pickerLabel.text = title
         pickerLabel.font = font
         pickerLabel.adjustsFontForContentSizeCategory = true
-        pickerLabel.accessibilityTraits = UIAccessibilityTraitAdjustable
+        pickerLabel.accessibilityTraits = UIAccessibilityTraits.adjustable
         pickerLabel.accessibilityValue = title
         pickerLabel.sizeToFit()
         return pickerLabel

@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(contentSizeCategoryChanged(_:)),
-                                               name: NSNotification.Name.UIContentSizeCategoryDidChange,
+                                               name: UIContentSizeCategory.didChangeNotification,
                                                object: nil)
 
     }

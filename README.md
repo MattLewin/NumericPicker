@@ -14,7 +14,7 @@
 
 ## Description
 
-NumericPicker is a drop-in iOS picker control written in Swift 4. It simplifies the creation of pickers that allow
+NumericPicker is a drop-in iOS picker control written in Swift. It simplifies the creation of pickers that allow
 your users to specify numbers by digit. It automatically uses the proper grouping and decimal separator for the
 current (or specified) locale. You can easily dictate the number of integer and decimal places in the controller.
 
@@ -37,8 +37,14 @@ current (or specified) locale. You can easily dictate the number of integer and 
 ---
 
 ## Minimum Requirements
-* Xcode 9.0+
-* iOS 10.3+
+### Version 1.1.x
+* Xcode 10
+* iOS 12
+* Swift 4.2
+
+### Version 1.0.x
+* Xcode 9.0
+* iOS 10.3
 
 ## Example
 
@@ -62,6 +68,12 @@ First, add the following line to your [Podfile](http://guides.cocoapods.org/usin
 pod "NumericPicker"
 ```
 
+or, for iOS versions 10.3 - 11.4
+
+```ruby
+pod "NumericPicker", '~> 1.0.0'
+```
+
 Second, install `NumericPicker` into your project:
 
 ```bash
@@ -77,6 +89,12 @@ To integrate `NumericPicker` into your Xcode project using Carthage, specify it 
 
 ```ruby
 github "MattLewin/NumericPicker"
+```
+
+or, for iOS versions 10.3 - 11.4
+
+```ruby
+github "MattLewin/NumericPicker" ~> 1.0.0
 ```
 
 Run `carthage update` to build the framework and drag the built `NumericPicker.framework` (in Carthage/Build/iOS folder)

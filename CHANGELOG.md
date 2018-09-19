@@ -1,3 +1,6 @@
+# 1.1.0
+* Update minimum requirements to be Xcode 10, iOS 12, and Swift 4.2
+
 # 1.0.1
 * Fix [issue #4](https://github.com/MattLewin/NumericPicker/issues/4): work around an iOS 12 SDK bug with picker view heights
 * Make NumericPicker example respond to changes in dynamic fonts
