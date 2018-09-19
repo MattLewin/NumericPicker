@@ -51,6 +51,12 @@ class ViewController: UIViewController {
         codeNumericPicker.locale = Locale(identifier: "de-DE")
         codeNumericPicker.addTarget(self, action: #selector(codeValueChanged), for: .valueChanged)
         codePickerStack.addArrangedSubview(codeNumericPicker)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(contentSizeCategoryChanged(_:)),
+                                               name: NSNotification.Name.UIContentSizeCategoryDidChange,
+                                               object: nil)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,4 +74,8 @@ class ViewController: UIViewController {
         ibPickerValue.text = sender.displayString
     }
 
+    @objc func contentSizeCategoryChanged(_ notification: Notification) {
+        ibNumericPicker.font = UIFont.preferredFont(forTextStyle: .body)
+        codeNumericPicker.font = UIFont.preferredFont(forTextStyle: .body)
+    }
 }
