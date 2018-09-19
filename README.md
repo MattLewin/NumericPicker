@@ -1,5 +1,3 @@
-# 2018-09-19: Please be aware that `NumericPicker` crashes with an `String index is out of bounds` error as of Xcode 10.0. A fix or work around will be coming soon. ***If you are awaiting this fix, please +1 or comment on [Issue #4](https://github.com/MattLewin/NumericPicker/issues/4), so I can gauge its importance.***
-
 # NumericPicker
 
 [![Version](https://img.shields.io/cocoapods/v/NumericPicker.svg?style=flat)](http://cocoapods.org/pods/NumericPicker)

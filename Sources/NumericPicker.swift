@@ -415,6 +415,12 @@ extension NumericPicker: UIPickerViewDelegate {
      */
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let unicodeScalers = componentsString.unicodeScalars
+
+        // Work around a bug in iOS 12 SDK
+        if component >= unicodeScalers.count {
+            return String(row)
+        }
+
         let index = unicodeScalers.index(unicodeScalers.startIndex, offsetBy: component)
         let char = componentsString.unicodeScalars[index]
 
