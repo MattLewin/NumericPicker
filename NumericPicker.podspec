@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NumericPicker'
-  s.version          = '1.1.1'
+  s.version          = '1.1.0'
   s.summary          = 'iOS picker for easily selecting numbers by digit.'
+  s.swift_version    = '4.2'
 
   s.description      = <<-DESC
         NumericPicker is a drop-in iOS picker control written in Swift. It makes simplifies the creation of pickers that allow
@@ -27,6 +28,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12'
 
   s.source_files = 'Sources'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
   s.frameworks = 'UIKit'
 end
