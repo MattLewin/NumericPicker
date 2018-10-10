@@ -39,11 +39,11 @@ current (or specified) locale. You can easily dictate the number of integer and 
 ## Minimum Requirements
 ### Version 1.1.x
 * Xcode 10
-* iOS 12
+* iOS 10.3
 * Swift 4.2
 
 ### Version 1.0.x
-* Xcode 9.0
+* Xcode 9
 * iOS 10.3
 
 ## Example
@@ -68,7 +68,7 @@ First, add the following line to your [Podfile](http://guides.cocoapods.org/usin
 pod "NumericPicker"
 ```
 
-or, for iOS versions 10.3 - 11.4
+or, for Xcode 9 and Swift 4.0
 
 ```ruby
 pod "NumericPicker", '~> 1.0.0'
@@ -91,7 +91,7 @@ To integrate `NumericPicker` into your Xcode project using Carthage, specify it 
 github "MattLewin/NumericPicker"
 ```
 
-or, for iOS versions 10.3 - 11.4
+or, for Xcode 9 and Swift 4.0
 
 ```ruby
 github "MattLewin/NumericPicker" ~> 1.0.0
