@@ -1,10 +1,11 @@
 # 1.1.1
-* Remove the obsolete (and build-breaking) versioning artifact forcing this cocoapod to build as Swift 4.0 
+* Reduce minimum required iOS version to 10.3. (Xcode 10 and Swift 4.2 still required)
 
 # 1.1.0
 * Update minimum requirements to be Xcode 10, iOS 12, and Swift 4.2
+* Remove the obsolete (and build-breaking) versioning artifact forcing this cocoapod to build as Swift 4.0 
 
-# 1.0.1
+# 1.0.1 - Long-Term Xcode 9 & Swift 4.0 support
 * Fix [issue #4](https://github.com/MattLewin/NumericPicker/issues/4): work around an iOS 12 SDK bug with picker view heights
 * Make NumericPicker example respond to changes in dynamic fonts
 
